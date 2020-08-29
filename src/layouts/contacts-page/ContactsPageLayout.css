@@ -1,0 +1,22 @@
+.ContactsPage {
+  width: 95%;
+  margin: 0 auto;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.ContactsPage-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ContactsPage-dashboard {
+  /* width: 30%; */
+}
+
+.ContactsPage-serviceContainer {
+  width: 100%;
+  background-color: #fff;
+  padding: 15px;
+  box-shadow: 0 5px 5px hsla(0, 0%, 40%, .1);
+}
