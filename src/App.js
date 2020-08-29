@@ -1,24 +1,19 @@
 import React from 'react';
+
+import HomePageLayout from './layouts/home-page/HomePageLayout';
+import UserProfileLayout from './layouts/user-profile-page/UserProfileLayout';
+import ContactsPageLayout from './layouts/contacts-page/ContactsPageLayout';
+
+import 'antd/dist/antd.css';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <HomePageLayout />
+      <UserProfileLayout />
+      <ContactsPageLayout />
     </div>
   );
 }
