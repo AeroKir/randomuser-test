@@ -1,0 +1,17 @@
+.Navbar {
+  display: flex;
+}
+
+.Navbar-list {
+  display: inherit;
+  list-style: none;
+}
+
+.Navbar-link {
+  text-transform: capitalize;
+}
+
+.Navbar-link.is-disabled {
+  cursor: auto;
+  color: #5a5a5a;
+}

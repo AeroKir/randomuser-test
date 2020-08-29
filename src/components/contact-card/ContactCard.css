@@ -1,0 +1,12 @@
+.UserProfile-userContactsList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; 
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.UserProfile-userContactsItem {
+  padding-bottom: 5px;
+}
