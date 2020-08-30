@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
-import { Route, Switch } from 'react-router-dom';
 
 import store, { history } from './store/store';
 import './index.css';
@@ -15,11 +14,7 @@ import ContactsPageLayout from './layouts/contacts-page/ContactsPageLayout';
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <Switch>
-        <Route exact path="/" component={App} />
-        <Route path="/contacts" component={ContactsPageLayout} />
-        <Route path="*" render={() => (<h1>PAGE NOT FOUND</h1>)} />
-      </Switch>
+      <App />
     </ConnectedRouter>
   </Provider>,
   document.getElementById('root')
