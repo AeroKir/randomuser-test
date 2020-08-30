@@ -8,9 +8,6 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import ContactsPageLayout from './layouts/contacts-page/ContactsPageLayout';
-
-
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
