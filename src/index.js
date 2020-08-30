@@ -9,11 +9,15 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+import ContactsPageLayout from './layouts/contacts-page/ContactsPageLayout';
+
+
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <Switch>
         <Route exact path="/" component={App} />
+        <Route path="/contacts" component={ContactsPageLayout} />
         <Route path="*" render={() => (<h1>PAGE NOT FOUND</h1>)} />
       </Switch>
     </ConnectedRouter>
