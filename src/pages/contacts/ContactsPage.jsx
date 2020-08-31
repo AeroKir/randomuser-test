@@ -4,17 +4,13 @@ import {
   Row,
   Col,
   Typography,
-  Button,
-  Tooltip,
   Pagination,
   Statistic,
   Space,
 } from 'antd';
-import {
-  ReloadOutlined, AppstoreOutlined, BarsOutlined,
-} from '@ant-design/icons';
 import classNames from 'classnames';
 
+import ContactsViewSwitcher from '../../components/contacts-views/ContactsViewSwitcher';
 import ContactsSearchFilterForm from '../../components/forms/ContactsSearchFilterForm';
 import TabularView from '../../components/contacts-views/TabularView';
 import TiledView from '../../components/contacts-views/TiledView';
@@ -34,30 +30,7 @@ function ContactsPage() {
       <div className="ContactsPage">
         <div className="ContactsPage-header">
           <Title level={1} style={{ fontSize: '32px' }}>Contacts</Title>
-          <div className="ContactsPage-dashboard">
-            <Tooltip title="Update data">
-              <Button
-                shape="circle-outline"
-                type="dashed"
-                icon={<ReloadOutlined />}
-                style={{ marginRight: '8px' }}
-              />
-            </Tooltip>
-
-            <Tooltip title="Tiled view">
-              <Button
-                type="primary"
-                icon={<AppstoreOutlined />}
-              />
-            </Tooltip>
-
-            <Tooltip title="Tabular view">
-              <Button
-                icon={<BarsOutlined />}
-              />
-            </Tooltip>
-
-          </div>
+          <ContactsViewSwitcher />
         </div>
 
         <Space style={{
