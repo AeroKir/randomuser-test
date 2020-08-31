@@ -1,10 +1,10 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import {
   Avatar,
   Menu,
   Dropdown,
   Button,
-  message,
 } from 'antd';
 import { DownOutlined, UserOutlined, LogoutOutlined } from '@ant-design/icons';
 import classNames from 'classnames';
@@ -13,16 +13,10 @@ import 'antd/dist/antd.css';
 import './UserProfileHeaderBlock.css';
 
 function UserProfileHeaderBlock() {
-  // const { Title, Text } = Typography;
-  function handleMenuClick(e) {
-    message.info('Click on menu item.');
-    console.log('click', e);
-  }
-
   const menu = (
-    <Menu onClick={handleMenuClick}>
+    <Menu>
       <Menu.Item key="1" icon={<UserOutlined />}>
-        Profile
+        <NavLink to="/profile">Profile</NavLink>
       </Menu.Item>
       <Menu.Item key="2" icon={<LogoutOutlined />}>
         Logout
