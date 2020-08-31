@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Modal,
   Button,
@@ -7,8 +8,7 @@ import {
 } from 'antd';
 import { CloseOutlined, LockOutlined, UserOutlined } from '@ant-design/icons';
 
-function SignInForm() {
-  const isVisible = false;
+function SignInForm({ isVisible, handleFormClose }) {
   return (
     <Modal
       title="Sign In"
@@ -19,6 +19,7 @@ function SignInForm() {
         <Button
           key="signin"
           type="primary"
+          htmlType="submit"
         >
           Sign In
         </Button>,
@@ -27,6 +28,7 @@ function SignInForm() {
           type="text"
           danger
           icon={<CloseOutlined />}
+          onClick={handleFormClose}
         >
           Cancel
         </Button>,
@@ -38,6 +40,7 @@ function SignInForm() {
           extra="Type any valid email"
         >
           <Input
+            name="email"
             size="large"
             placeholder="Email"
             prefix={<UserOutlined />}
@@ -48,6 +51,7 @@ function SignInForm() {
           extra="Type any valid password"
         >
           <Input.Password
+            name="password"
             size="large"
             placeholder="Password"
             prefix={<LockOutlined />}
@@ -57,5 +61,10 @@ function SignInForm() {
     </Modal>
   );
 }
+
+SignInForm.propTypes = {
+  isVisible: PropTypes.bool.isRequired,
+  handleFormClose: PropTypes.func.isRequired,
+};
 
 export default SignInForm;
