@@ -1,6 +1,7 @@
 import React from 'react';
 import { Layout } from 'antd';
 
+import './HomePage.css';
 import reactLogo from '../../assets/react-logo.svg';
 
 function HomePage() {
@@ -8,8 +9,8 @@ function HomePage() {
 
   return (
     <Content>
-      <div>
-        <img src={reactLogo} alt="" />
+      <div className="HomePage">
+        <img className="App-logo" src={reactLogo} alt="React logo" />
       </div>
     </Content>
   );
