@@ -1,9 +1,9 @@
 import { createStore, compose, applyMiddleware } from 'redux';
 import { createBrowserHistory } from 'history';
 import { routerMiddleware } from 'connected-react-router';
+import initialState from './initialState';
 import createRootReducer from '../reducers/rootReducer';
 
-const initialState = {};
 const enhancers = [];
 
 export const history = createBrowserHistory();
