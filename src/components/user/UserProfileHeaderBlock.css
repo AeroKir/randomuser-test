@@ -1,3 +1,10 @@
 .UserProfileHeaderBlock {
   display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-top: 10px;
+}
+
+.UserProfileHeaderBlock-button {
+  color: #5f5f5f;
 }
