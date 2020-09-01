@@ -1,0 +1,2 @@
+export const SHOW_SIGN_IN_FORM = 'SHOW_SIGN_IN_FORM';
+export const HIDE_SIGN_IN_FORM = 'HIDE_SIGN_IN_FORM';
