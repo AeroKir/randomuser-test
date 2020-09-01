@@ -1,3 +1,7 @@
-const initialState = {};
+const initialState = {
+  user: {
+    isSignInFormShowed: false,
+  },
+};
 
 export default initialState;
