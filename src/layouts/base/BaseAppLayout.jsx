@@ -4,6 +4,8 @@ import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import classNames from 'classnames';
 
 import Header from '../../components/header/Header';
+import HeaderContainer from '../../components/header/HeaderContainer';
+import SignInFormContainer from '../../components/forms/SignInFormContainer';
 import Footer from '../../components/footer/Footer';
 
 import HomePage from '../../pages/home/HomePage';
@@ -19,7 +21,9 @@ function BaseAppLayout() {
   return (
     <BrowserRouter>
       <Layout className={layout}>
-        <Header />
+        <HeaderContainer />
+        {/* <Header /> */}
+        {/* <SignInFormContainer /> */}
 
         <Switch>
           <Route exact path="/" component={HomePage} />
