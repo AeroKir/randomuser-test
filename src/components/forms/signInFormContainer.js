@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 import { hideSignInForm, fetchUser, switchToUserProfile } from '../../actions/signInForm';
 import SignInForm from './SignInForm';
 
-const mapStateToProps = ({ signInFormReducer }) => ({
-  isVisible: signInFormReducer.user.isSignInFormShowed,
+const mapStateToProps = ({ preloadedState }) => ({
+  isVisible: preloadedState.isSignInFormShowed,
 });
 
 function mapDispatchToProps(dispatch) {
