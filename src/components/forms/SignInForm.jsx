@@ -17,11 +17,12 @@ const minLength = (min) => (value) => (value && value.length < min ? `The passwo
 const minLength8 = minLength(8);
 
 let SignInForm = ({
-  isVisible, handleFormSubmit, handleFormClose, isFormValid, invalid,
+  handleFormSubmit, handleFormClose, submitting, invalid, switchToProfile, isVisible,
 }) => {
   const onClickAction = (e) => {
     e.preventDefault();
     handleFormSubmit(e);
+    switchToProfile();
   };
 
   const [passwordShown, setPasswordShown] = useState(false);
@@ -70,7 +71,7 @@ let SignInForm = ({
           key="signin"
           type="primary"
           htmlType="submit"
-          disabled={invalid || isFormValid}
+          disabled={invalid || submitting}
         >
           Sign In
         </Button>
@@ -90,11 +91,16 @@ let SignInForm = ({
 };
 
 SignInForm.propTypes = {
-  isVisible: PropTypes.bool.isRequired,
   handleFormSubmit: PropTypes.func.isRequired,
   handleFormClose: PropTypes.func.isRequired,
-  isFormValid: PropTypes.bool.isRequired,
+  switchToProfile: PropTypes.func.isRequired,
+  submitting: PropTypes.bool.isRequired,
   invalid: PropTypes.bool.isRequired,
+  isVisible: PropTypes.bool,
+};
+
+SignInForm.defaultProps = {
+  isVisible: false,
 };
 
 const selector = formValueSelector('signInForm');
