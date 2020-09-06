@@ -1,14 +1,14 @@
 import React from 'react';
 import { Layout } from 'antd';
 
-import UserProfile from '../../components/user/UserProfile';
+import UserProfileContainer from '../../components/user/userProfileContainer';
 
 function UserProfilePage() {
   const { Content } = Layout;
 
   return (
     <Content>
-      <UserProfile />
+      <UserProfileContainer />
     </Content>
   );
 }
