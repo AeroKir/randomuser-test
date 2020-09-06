@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 
 import './Navbar.css';
 
-function Navbar() {
+function Navbar({ isUserLoggedOut }) {
   const navbar = classNames('Navbar');
   const navbarList = classNames('Navbar-list');
 
@@ -18,6 +19,18 @@ function Navbar() {
       key: 'contacts',
     },
   ];
+
+  if (isUserLoggedOut) {
+    return (
+      <nav className={navbar}>
+        <ul className={navbarList}>
+          <li key="Home" className="Navbar-item">
+            <span>Home</span>
+          </li>
+        </ul>
+      </nav>
+    );
+  }
 
   return (
     <nav className={navbar}>
@@ -41,5 +54,9 @@ function Navbar() {
 
   );
 }
+
+Navbar.propTypes = {
+  isUserLoggedOut: PropTypes.bool.isRequired,
+};
 
 export default Navbar;
