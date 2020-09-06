@@ -6,9 +6,9 @@ import {
 import { LoginOutlined } from '@ant-design/icons';
 import classNames from 'classnames';
 
-import Logo from '../logo/Logo';
-import Navbar from '../navbar/Navbar';
-import UserProfileHeaderBlock from '../user/UserProfileHeaderBlock';
+import LogoContainer from '../logo/logoContainer';
+import NavbarContainer from '../navbar/navbarContainer';
+import UserProfileHeaderBlockContainer from '../user/userProfileHeaderBlockContainer';
 
 import 'antd/dist/antd.css';
 import './Header.css';
@@ -22,12 +22,12 @@ function Header({ handleSignIn, isSignedIn }) {
 
         <Row align="top" style={{ width: '5%' }}>
           <Col>
-            <Logo />
+            <LogoContainer />
           </Col>
         </Row>
         <Row justify="space-between" align="top" style={{ width: '95%' }}>
           <Col span={10}>
-            <Navbar />
+            <NavbarContainer />
           </Col>
           {!isSignedIn ? (
             <Col span={2}>
@@ -44,7 +44,7 @@ function Header({ handleSignIn, isSignedIn }) {
             </Col>
           ) : (
             <Col span={6}>
-              <UserProfileHeaderBlock />
+              <UserProfileHeaderBlockContainer />
             </Col>
           )}
         </Row>
@@ -56,7 +56,11 @@ function Header({ handleSignIn, isSignedIn }) {
 
 Header.propTypes = {
   handleSignIn: PropTypes.func.isRequired,
-  isSignedIn: PropTypes.bool.isRequired,
+  isSignedIn: PropTypes.bool,
+};
+
+Header.defaultProps = {
+  isSignedIn: false,
 };
 
 export default Header;
