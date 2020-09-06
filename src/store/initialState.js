@@ -7,6 +7,12 @@ const initialState = {
     userEmail: '',
     userPassword: '',
   },
+  contacts: {
+    isTableView: true,
+    isTiledView: false,
+    isLoading: false,
+    contactsCollection: JSON.parse(localStorage.getItem('contactsCollection')) || {},
+  },
 };
 
 export default initialState;
