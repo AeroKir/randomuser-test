@@ -2,12 +2,9 @@ import { connect } from 'react-redux';
 import { showSignInForm } from '../../actions/signInForm';
 import Header from './Header';
 
-const mapStateToProps = ({ signInFormReducer }) => {
-  console.log(signInFormReducer.userData);
-  return {
-    isSignedIn: signInFormReducer.user.isUserSignedIn,
-  };
-};
+const mapStateToProps = ({ preloadedState }) => ({
+  isSignedIn: preloadedState.isUserSignedIn,
+});
 
 function mapDispatchToProps(dispatch) {
   return {
