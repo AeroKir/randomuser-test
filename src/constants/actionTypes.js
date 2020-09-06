@@ -8,4 +8,4 @@ export const LOGOUT = 'LOGOUT';
 
 // Contacts page actions
 export const SET_TILED_VIEW = 'SET_TILED_VIEW';
-export const SET_TABULAR_VIEW = 'SET_TABULAR_VIEW';
+export const SET_TABLE_VIEW = 'SET_TABLE_VIEW';
