@@ -8,8 +8,8 @@ import contactsPageReducer from './contactsPageReducer';
 const createRootReducer = (history) => combineReducers({
   router: connectRouter(history),
   preloadedState: preloadedStateReducer,
+  contacts: contactsPageReducer,
   form: formReducer,
-  // contactsPageReducer,
 });
 
 export default createRootReducer;
