@@ -1,42 +1,46 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Layout } from 'antd';
-import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import { Route, Switch, Router } from 'react-router-dom';
 import classNames from 'classnames';
 
-import Header from '../../components/header/Header';
-import HeaderContainer from '../../components/header/HeaderContainer';
-import SignInFormContainer from '../../components/forms/SignInFormContainer';
+import HeaderContainer from '../../components/header/headerContainer';
+import SignInFormContainer from '../../components/forms/signInFormContainer';
 import Footer from '../../components/footer/Footer';
 
 import HomePage from '../../pages/home/HomePage';
 import UserProfilePage from '../../pages/user-profile/UserProfilePage';
 import ContactsPage from '../../pages/contacts/ContactsPage';
-import NotFoundPage from '../../pages/not-found/NotFoundPage';
+import Page404Container from '../../pages/page-404/page404Container';
 
 import './BaseAppLayout.css';
 
-function BaseAppLayout() {
+function BaseAppLayout({ history }) {
   const layout = classNames('BaseAppLayout');
 
   return (
-    <BrowserRouter>
+    <Router history={history}>
       <Layout className={layout}>
         <HeaderContainer />
-        {/* <Header /> */}
-        {/* <SignInFormContainer /> */}
+
+        <SignInFormContainer />
 
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route path="/profile" component={UserProfilePage} />
-          <Route path="/contacts" component={ContactsPage} />
-          <Route path="*" component={NotFoundPage} />
+          <Route exact path="/profile" component={UserProfilePage} />
+          <Route exact path="/contacts" component={ContactsPage} />
+          <Route path="*" component={Page404Container} />
         </Switch>
 
         <Footer />
       </Layout>
-    </BrowserRouter>
-
+    </Router>
   );
 }
+
+BaseAppLayout.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  history: PropTypes.object.isRequired,
+};
 
 export default BaseAppLayout;
