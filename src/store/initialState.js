@@ -12,6 +12,9 @@ const initialState = {
     isTiledView: false,
     isLoading: false,
     contactsCollection: JSON.parse(localStorage.getItem('contactsCollection')) || {},
+    contactsPerPage: 10,
+    defaultCurrentPage: 1,
+    currentPage: 1,
   },
 };
 
