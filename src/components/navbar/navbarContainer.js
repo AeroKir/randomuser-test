@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { showSignInForm } from '../../actions/signInForm';
+import { fetchContacts } from '../../actions/contactsPage';
 import Navbar from './Navbar';
 
 const mapStateToProps = ({ preloadedState }) => {
@@ -8,12 +8,12 @@ const mapStateToProps = ({ preloadedState }) => {
   };
 };
 
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     handleSignIn: () => dispatch(showSignInForm()),
-//   };
-// }
+function mapDispatchToProps(dispatch) {
+  return {
+    handleFetchContacts: () => dispatch(fetchContacts()),
+  };
+}
 
-const NavbarContainer = connect(mapStateToProps, null)(Navbar);
+const NavbarContainer = connect(mapStateToProps, mapDispatchToProps)(Navbar);
 
 export default NavbarContainer;
