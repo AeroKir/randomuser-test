@@ -96,6 +96,7 @@ function TableView({ contactsCollection, isLoading }) {
     <Table
       columns={columns}
       dataSource={data}
+      pagination={false}
     />
   );
 }
