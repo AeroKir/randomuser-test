@@ -1,13 +1,32 @@
 import { connect } from 'react-redux';
-import { setTiledView, setTableView } from '../../actions/contactsPage';
+import { setTiledView, setTableView, paginate } from '../../actions/contactsPage';
 import ContactsPage from './ContactsPage';
 
 const mapStateToProps = ({ contacts }) => {
-  const { isTableView, isTiledView } = contacts;
-
-  return {
+  const {
+    contactsCollection,
+    isLoading,
     isTableView,
     isTiledView,
+    contactsPerPage,
+    currentPage,
+  } = contacts;
+
+  const malesAmount = contactsCollection.filter((contact) => contact.gender === 'male');
+  const femalesAmount = contactsCollection.filter((contact) => contact.gender === 'female');
+  const indeterminateAmount = contactsCollection.filter((contact) => contact.gender === 'indeterminate');
+
+  return {
+    contactsCollection,
+    isLoading,
+    isTableView,
+    isTiledView,
+    contactsPerPage,
+    currentPage,
+    collectionSize: contactsCollection.length,
+    malesAmount: malesAmount.length,
+    femalesAmount: femalesAmount.length,
+    indeterminateAmount: indeterminateAmount.length,
   };
 };
 
@@ -15,6 +34,7 @@ function mapDispatchToProps(dispatch) {
   return {
     handleTiledView: () => dispatch(setTiledView()),
     handleTabularView: () => dispatch(setTableView()),
+    handlePaginate: (number, contactsPerPage) => dispatch(paginate(number, contactsPerPage)),
   };
 }
 

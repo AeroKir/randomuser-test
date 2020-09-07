@@ -18,27 +18,42 @@ import classNames from 'classnames';
 
 import ContactsSearchFilterForm from '../../components/forms/ContactsSearchFilterForm';
 import TableView from '../../components/contacts-views/TableView';
-import TableViewContainer from '../../components/contacts-views/tableViewContainer';
 import TiledView from '../../components/contacts-views/TiledView';
-import TiledViewContainer from '../../components/contacts-views/tiledViewContainer';
 import StatisticBlock from '../../components/statistic/StatisticBlock';
 
 import 'antd/dist/antd.css';
 import './ContactsPage.css';
 
 function ContactsPage({
+  contactsCollection,
+  isLoading,
   isTiledView,
   isTableView,
   handleTiledView,
   handleTabularView,
+  collectionSize,
+  malesAmount,
+  femalesAmount,
+  indeterminateAmount,
+  contactsPerPage,
+  currentPage,
+  defaultCurrentPage,
+  handlePaginate,
 }) {
   const { Content } = Layout;
 
   const { Title, Text } = Typography;
   const serviceContainer = classNames('ContactsPage-serviceContainer');
-  const viewSwitcherButton = classNames(
-    'ViewSwitcherButton',
-  );
+  const viewSwitcherButton = classNames('ViewSwitcherButton');
+
+  const handleChange = (number, contactsAmount) => {
+    handlePaginate(number, contactsAmount);
+  };
+
+  // Get current contacts
+  const indexOfLastContact = currentPage * contactsPerPage;
+  const indexOfFirstContact = indexOfLastContact - contactsPerPage;
+  const currentContacts = contactsCollection.slice(indexOfFirstContact, indexOfLastContact);
 
   return (
     <Content>
@@ -85,10 +100,10 @@ function ContactsPage({
         </Space>
 
         {isTableView ? (
-          <TableViewContainer />
+          <TableView contactsCollection={currentContacts} isLoading={isLoading} />
         ) : (
           <Row justify="center">
-            <TiledViewContainer />
+            <TiledView contactsCollection={currentContacts} isLoading={isLoading} />
           </Row>
         )}
 
@@ -100,21 +115,22 @@ function ContactsPage({
             <Title level={2}>Statistic</Title>
             <Row gutter={16}>
               <Col>
-                <Statistic title="Collection size" value={278} />
+                <Statistic title="Collection size" value={collectionSize} />
               </Col>
               <Col>
-                <Statistic title="Males" value={140} />
+                <Statistic title="Males" value={malesAmount} />
               </Col>
               <Col>
-                <Statistic title="Females" value={138} />
+                <Statistic title="Females" value={femalesAmount} />
               </Col>
               <Col>
-                <Statistic title="Indeterminate" value={0} />
+                <Statistic title="Indeterminate" value={indeterminateAmount} />
               </Col>
             </Row>
             <Row>
               <Col>
-                <Text mark>Men predominate</Text>
+                {malesAmount > femalesAmount ? <Text mark>Men predominate</Text> : <Text mark>Women predominate</Text>}
+                {/* <Text mark>Men predominate</Text> */}
               </Col>
             </Row>
             <Text type="secondary">Nationalities</Text>
@@ -122,7 +138,14 @@ function ContactsPage({
           </div>
         </Space>
 
-        <Pagination size="small" total={50} showSizeChanger />
+        <Pagination
+          size="small"
+          defaultCurrent={defaultCurrentPage}
+          total={collectionSize}
+          defaultPageSize={contactsPerPage}
+          showSizeChanger
+          onChange={handleChange}
+        />
       </div>
 
     </Content>
@@ -130,15 +153,33 @@ function ContactsPage({
 }
 
 ContactsPage.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
   handleTiledView: PropTypes.func.isRequired,
   handleTabularView: PropTypes.func.isRequired,
+  handlePaginate: PropTypes.func.isRequired,
+  contactsCollection: PropTypes.arrayOf(PropTypes.object),
   isTableView: PropTypes.bool,
   isTiledView: PropTypes.bool,
+  collectionSize: PropTypes.number,
+  malesAmount: PropTypes.number,
+  femalesAmount: PropTypes.number,
+  indeterminateAmount: PropTypes.number,
+  contactsPerPage: PropTypes.number,
+  currentPage: PropTypes.number,
+  defaultCurrentPage: PropTypes.number,
 };
 
 ContactsPage.defaultProps = {
+  contactsCollection: [{}],
   isTableView: true,
   isTiledView: false,
+  collectionSize: 0,
+  malesAmount: 0,
+  femalesAmount: 0,
+  indeterminateAmount: 0,
+  contactsPerPage: 10,
+  currentPage: 1,
+  defaultCurrentPage: 1,
 };
 
 export default ContactsPage;
