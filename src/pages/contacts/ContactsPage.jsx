@@ -136,8 +136,9 @@ function ContactsPage({
             </Row>
             <Row>
               <Col>
-                {malesAmount > femalesAmount ? <Text mark>Men predominate</Text> : <Text mark>Women predominate</Text>}
-                {/* <Text mark>Men predominate</Text> */}
+                {malesAmount > femalesAmount
+                  ? <Text mark>Men predominate</Text> : <Text mark>Women predominate</Text>}
+
               </Col>
             </Row>
             <Text type="secondary">Nationalities</Text>
