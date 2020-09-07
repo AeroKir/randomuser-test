@@ -97,6 +97,7 @@ function TableView({ contactsCollection, isLoading }) {
       columns={columns}
       dataSource={data}
       pagination={false}
+      style={{ marginBottom: 15, boxShadow: '0 5px 5px hsla(0,0%,40%,.1' }}
     />
   );
 }
