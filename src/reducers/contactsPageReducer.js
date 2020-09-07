@@ -43,11 +43,7 @@ function contactsPageReducer(state = initialState.contacts, action) {
         ...state,
         contactsCollection: action.payload.contactsData,
         isLoading: false,
-
-        // isUserDataLoading: false,
       };
-
-      // return { ...state, fetchedUser: action.payload.userData };
     }
 
     default:
