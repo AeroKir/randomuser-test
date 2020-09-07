@@ -24,11 +24,12 @@ function handleErrors(response) {
 
 export function fetchContacts() {
   return (dispatch) => {
+    const numberOfContacts = JSON.parse(localStorage.getItem('numberOfContacts'));
+    const urlContacts = `https://randomuser.me/api/?results=${numberOfContacts}`;
+
     dispatch(contactsLoading());
 
-    const url = 'https://randomuser.me/api/?results=67';
-
-    fetch(url)
+    fetch(urlContacts)
       .then(handleErrors)
       .then((response) => response.json())
       .then((json) => {

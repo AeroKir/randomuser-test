@@ -1,4 +1,5 @@
 import initialState from '../store/initialState';
+import generateRandomIntegerInRange from '../utils/generateRandomInteger';
 import {
   SHOW_SIGN_IN_FORM,
   HIDE_SIGN_IN_FORM,
@@ -51,6 +52,7 @@ function preloadedStateReducer(state = initialState, action) {
     case GET_USER:
     {
       localStorage.setItem('user', JSON.stringify(action.payload.userData));
+      localStorage.setItem('numberOfContacts', JSON.stringify(generateRandomIntegerInRange(1, 200)));
 
       return {
         ...state,
