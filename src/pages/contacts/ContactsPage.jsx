@@ -57,7 +57,7 @@ function ContactsPage({
 
             <Tooltip title="Tiled view">
               <Button
-                type="primary"
+                type={isTiledView ? 'primary' : 'default'}
                 icon={<AppstoreOutlined />}
                 className={viewSwitcherButton}
                 onClick={handleTiledView}
@@ -66,7 +66,7 @@ function ContactsPage({
 
             <Tooltip title="Tabular view">
               <Button
-                type="default"
+                type={isTableView ? 'primary' : 'default'}
                 icon={<BarsOutlined />}
                 className={viewSwitcherButton}
                 onClick={handleTabularView}
