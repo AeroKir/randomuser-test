@@ -1,8 +1,0 @@
-.ViewSwitcherButton {
-  color: #828282;
-}
-
-.ViewSwitcherButton.is-active {
-  color: #ffffff;
-  background-color: #3fa7fc;
-}
