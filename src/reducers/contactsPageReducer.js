@@ -5,6 +5,7 @@ import {
   CONTACTS_LOADING,
   GET_CONTACTS_SUCCESS,
   CONTACTS_LOADING_FAIL,
+  PAGINATE,
 } from '../constants/actionTypes';
 
 function contactsPageReducer(state = initialState.contacts, action) {
@@ -43,6 +44,15 @@ function contactsPageReducer(state = initialState.contacts, action) {
         ...state,
         contactsCollection: action.payload.contactsData,
         isLoading: false,
+      };
+    }
+
+    case PAGINATE:
+    {
+      return {
+        ...state,
+        currentPage: action.payload.currentPageNumber,
+        contactsPerPage: action.payload.pageSize,
       };
     }
 

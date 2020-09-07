@@ -5,6 +5,7 @@ import {
   CONTACTS_LOADING,
   GET_CONTACTS_SUCCESS,
   CONTACTS_LOADING_FAIL,
+  PAGINATE,
 } from '../constants/actionTypes';
 
 export const setTiledView = createAction(SET_TILED_VIEW);
@@ -12,6 +13,7 @@ export const setTableView = createAction(SET_TABLE_VIEW);
 export const contactsLoading = createAction(CONTACTS_LOADING);
 export const getContactsSuccess = createAction(GET_CONTACTS_SUCCESS, 'contactsData');
 export const contactsLoadingFail = createAction(CONTACTS_LOADING_FAIL);
+export const paginate = createAction(PAGINATE, 'currentPageNumber', 'pageSize');
 
 function handleErrors(response) {
   if (!response.ok) {
@@ -24,7 +26,7 @@ export function fetchContacts() {
   return (dispatch) => {
     dispatch(contactsLoading());
 
-    const url = 'https://randomuser.me/api/?results=50';
+    const url = 'https://randomuser.me/api/?results=67';
 
     fetch(url)
       .then(handleErrors)
