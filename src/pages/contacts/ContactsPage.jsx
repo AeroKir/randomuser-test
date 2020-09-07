@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Layout,
   Row,
@@ -7,30 +8,71 @@ import {
   Pagination,
   Statistic,
   Space,
+  Button,
+  Tooltip,
 } from 'antd';
+import {
+  ReloadOutlined, AppstoreOutlined, BarsOutlined,
+} from '@ant-design/icons';
 import classNames from 'classnames';
 
-import ContactsViewSwitcher from '../../components/contacts-views/ContactsViewSwitcher';
 import ContactsSearchFilterForm from '../../components/forms/ContactsSearchFilterForm';
-import TabularView from '../../components/contacts-views/TabularView';
+import TableView from '../../components/contacts-views/TableView';
+import TableViewContainer from '../../components/contacts-views/tableViewContainer';
 import TiledView from '../../components/contacts-views/TiledView';
+import TiledViewContainer from '../../components/contacts-views/tiledViewContainer';
 import StatisticBlock from '../../components/statistic/StatisticBlock';
 
 import 'antd/dist/antd.css';
 import './ContactsPage.css';
 
-function ContactsPage() {
+function ContactsPage({
+  isTiledView,
+  isTableView,
+  handleTiledView,
+  handleTabularView,
+}) {
   const { Content } = Layout;
 
   const { Title, Text } = Typography;
   const serviceContainer = classNames('ContactsPage-serviceContainer');
+  const viewSwitcherButton = classNames(
+    'ViewSwitcherButton',
+  );
 
   return (
     <Content>
       <div className="ContactsPage">
         <div className="ContactsPage-header">
           <Title level={1} style={{ fontSize: '32px' }}>Contacts</Title>
-          <ContactsViewSwitcher />
+          <div>
+            <Tooltip title="Update data">
+              <Button
+                shape="circle-outline"
+                type="dashed"
+                icon={<ReloadOutlined />}
+                style={{ marginRight: '8px' }}
+              />
+            </Tooltip>
+
+            <Tooltip title="Tiled view">
+              <Button
+                type="primary"
+                icon={<AppstoreOutlined />}
+                className={viewSwitcherButton}
+                onClick={handleTiledView}
+              />
+            </Tooltip>
+
+            <Tooltip title="Tabular view">
+              <Button
+                type="default"
+                icon={<BarsOutlined />}
+                className={viewSwitcherButton}
+                onClick={handleTabularView}
+              />
+            </Tooltip>
+          </div>
         </div>
 
         <Space style={{
@@ -38,15 +80,17 @@ function ContactsPage() {
         }}
         >
           <div className={serviceContainer}>
-            <ContactsSearchFilterForm />
+            <ContactsSearchFilterForm active />
           </div>
         </Space>
 
-        <Row justify="center">
-          <TiledView />
-        </Row>
-
-        <TabularView />
+        {isTableView ? (
+          <TableViewContainer />
+        ) : (
+          <Row justify="center">
+            <TiledViewContainer />
+          </Row>
+        )}
 
         <Space style={{
           backgroundColor: '#fafafa', width: '100%', padding: '10px', marginBottom: '15px',
@@ -84,5 +128,17 @@ function ContactsPage() {
     </Content>
   );
 }
+
+ContactsPage.propTypes = {
+  handleTiledView: PropTypes.func.isRequired,
+  handleTabularView: PropTypes.func.isRequired,
+  isTableView: PropTypes.bool,
+  isTiledView: PropTypes.bool,
+};
+
+ContactsPage.defaultProps = {
+  isTableView: true,
+  isTiledView: false,
+};
 
 export default ContactsPage;

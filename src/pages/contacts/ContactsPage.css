@@ -16,3 +16,12 @@
   padding: 15px;
   box-shadow: 0 5px 5px hsla(0, 0%, 40%, .1);
 }
+
+.ViewSwitcherButton {
+  color: #828282;
+}
+
+.ViewSwitcherButton.is-active {
+  color: #ffffff;
+  background-color: #3fa7fc;
+}
