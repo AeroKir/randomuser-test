@@ -58,16 +58,12 @@ function preloadedStateReducer(state = initialState, action) {
         isUserSignedIn: true,
         user: action.payload.userData,
         isLoading: false,
-
-        // isUserDataLoading: false,
       };
-
-      // return { ...state, fetchedUser: action.payload.userData };
     }
 
     case LOGOUT:
     {
-      localStorage.removeItem('user');
+      localStorage.clear();
 
       return {
         isSignInFormShowed: false,
