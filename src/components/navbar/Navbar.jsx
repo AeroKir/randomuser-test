@@ -5,20 +5,13 @@ import classNames from 'classnames';
 
 import './Navbar.css';
 
-function Navbar({ isUserLoggedOut }) {
+function Navbar({ isUserLoggedOut, handleFetchContacts }) {
   const navbar = classNames('Navbar');
   const navbarList = classNames('Navbar-list');
 
-  const navbarRoutes = [
-    {
-      name: 'Home',
-      key: '/',
-    },
-    {
-      name: 'Contacts',
-      key: 'contacts',
-    },
-  ];
+  const onClickAction = () => {
+    handleFetchContacts();
+  };
 
   if (isUserLoggedOut) {
     return (
@@ -35,28 +28,39 @@ function Navbar({ isUserLoggedOut }) {
   return (
     <nav className={navbar}>
       <ul className={navbarList}>
-        {navbarRoutes.map((route) => (
-          <li key={route.key} className="Navbar-item">
-            <NavLink
-              exact
-              to={route.key}
-              activeStyle={{
-                cursor: 'auto',
-                color: '#5a5a5a',
-              }}
-            >
-              {route.name}
-            </NavLink>
-          </li>
-        ))}
+        <li key="home" className="Navbar-item">
+          <NavLink
+            exact
+            to="/"
+            activeStyle={{
+              cursor: 'auto',
+              color: '#5a5a5a',
+            }}
+          >
+            Home
+          </NavLink>
+        </li>
+        <li key="contacts" className="Navbar-item">
+          <NavLink
+            exact
+            to="/contacts"
+            activeStyle={{
+              cursor: 'auto',
+              color: '#5a5a5a',
+            }}
+            onClick={onClickAction}
+          >
+            Contacts
+          </NavLink>
+        </li>
       </ul>
     </nav>
-
   );
 }
 
 Navbar.propTypes = {
   isUserLoggedOut: PropTypes.bool.isRequired,
+  handleFetchContacts: PropTypes.func.isRequired,
 };
 
 export default Navbar;
