@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { showSignInForm } from '../../actions/signInForm';
 import TiledView from './TiledView';
 
 const mapStateToProps = ({ contacts }) => {
@@ -10,12 +9,6 @@ const mapStateToProps = ({ contacts }) => {
     isLoading,
   };
 };
-
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     handleSignIn: () => dispatch(showSignInForm()),
-//   };
-// }
 
 const TiledViewContainer = connect(mapStateToProps, null)(TiledView);
 
