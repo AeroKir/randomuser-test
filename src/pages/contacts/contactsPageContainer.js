@@ -1,5 +1,10 @@
 import { connect } from 'react-redux';
-import { setTiledView, setTableView, paginate } from '../../actions/contactsPage';
+import {
+  fetchContacts,
+  setTiledView,
+  setTableView,
+  paginate,
+} from '../../actions/contactsPage';
 import ContactsPage from './ContactsPage';
 
 const mapStateToProps = ({ contacts }) => {
@@ -32,6 +37,7 @@ const mapStateToProps = ({ contacts }) => {
 
 function mapDispatchToProps(dispatch) {
   return {
+    handleFetchContacts: () => dispatch(fetchContacts()),
     handleTiledView: () => dispatch(setTiledView()),
     handleTabularView: () => dispatch(setTableView()),
     handlePaginate: (number, contactsPerPage) => dispatch(paginate(number, contactsPerPage)),

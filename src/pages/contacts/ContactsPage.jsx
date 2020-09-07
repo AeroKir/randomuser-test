@@ -39,12 +39,17 @@ function ContactsPage({
   currentPage,
   defaultCurrentPage,
   handlePaginate,
+  handleFetchContacts,
 }) {
   const { Content } = Layout;
 
   const { Title, Text } = Typography;
   const serviceContainer = classNames('ContactsPage-serviceContainer');
   const viewSwitcherButton = classNames('ViewSwitcherButton');
+
+  const onContactsUpdate = () => {
+    handleFetchContacts();
+  };
 
   const handleChange = (number, contactsAmount) => {
     handlePaginate(number, contactsAmount);
@@ -67,6 +72,8 @@ function ContactsPage({
                 type="dashed"
                 icon={<ReloadOutlined />}
                 style={{ marginRight: '8px' }}
+                onClick={onContactsUpdate}
+                loading={isLoading}
               />
             </Tooltip>
 
@@ -154,6 +161,7 @@ function ContactsPage({
 
 ContactsPage.propTypes = {
   isLoading: PropTypes.bool.isRequired,
+  handleFetchContacts: PropTypes.func.isRequired,
   handleTiledView: PropTypes.func.isRequired,
   handleTabularView: PropTypes.func.isRequired,
   handlePaginate: PropTypes.func.isRequired,
