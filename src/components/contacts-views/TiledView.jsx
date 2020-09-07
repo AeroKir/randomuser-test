@@ -1,69 +1,50 @@
 import React from 'react';
-import {
-  Avatar,
-  Tag,
-  Typography,
-  Row,
-  Col,
-} from 'antd';
+import PropTypes from 'prop-types';
+import { Row, Col, Spin } from 'antd';
 
 import ContactCard from '../contact-card/ContactCard';
 
-function TiledView() {
-  const { Text } = Typography;
-
-  const text = {
-    values: [
-      {
-        email: 'example@mail.com',
-        phone: '+7789716293',
-        location: '6655 Bollinger Rd, Cape Fear, Tennessee 49132',
-      },
-    ],
-  };
-
-  const data = [
-    {
-      key: '1',
-      avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-      fullName: 'Ivan Ivanov',
-      birthday: '01.01.01',
-      email: 'email@example.com',
-      phone: '+123456789',
-      location: '/New Zealand/ 6257 Esmonde Road, Timaru, Wellington 27976',
-      nationality: 'New Zelander',
-    },
-    {
-      key: '2',
-      avatar: 'https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg',
-      fullName: 'Petr Petrov',
-      birthday: '01.01.01',
-      email: 'petr-petrov@example.com',
-      phone: '+123456789',
-      location: '/New Zealand/ 6257 Esmonde Road, Timaru, Wellington 27976',
-      nationality: 'Uzbek',
-    },
-    {
-      key: '3',
-      avatar: 'https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg',
-      fullName: 'Petr Petrov',
-      birthday: '01.01.01',
-      email: 'petr-petrov@example.com',
-      phone: '+123456789',
-      location: '/New Zealand/ 6257 Esmonde Road, Timaru, Wellington 27976',
-      nationality: 'Uzbek',
-    },
-  ];
-
+function TiledView({
+  contactsCollection,
+  isLoading,
+}) {
+  if (isLoading) {
+    return (
+      <Spin />
+    );
+  }
   return (
     <Row gutter={[16, 20]}>
-      {data.map((item) => (
+      {contactsCollection.map((contact) => (
         <Col span={8}>
-          <ContactCard />
+          <ContactCard
+            contactCardImage={contact.picture.medium}
+            contactCardTitle={`${contact.name.title}. ${contact.name.first} ${contact.name.last}`}
+            contactCardTitleSecondary={`(${contact.dob.age} years)`}
+            contactCardEmail={contact.email}
+            contactCardPhone={contact.phone}
+            contactCardLocation={
+              `${contact.location.street.number}
+               ${contact.location.street.name},
+               ${contact.location.city},
+               ${contact.location.state}
+               ${contact.location.postcode}`
+            }
+            contactCardNationality={contact.nat}
+          />
         </Col>
       ))}
     </Row>
   );
 }
+
+TiledView.propTypes = {
+  contactsCollection: PropTypes.arrayOf(PropTypes.object),
+  isLoading: PropTypes.bool.isRequired,
+};
+
+TiledView.defaultProps = {
+  contactsCollection: [{}],
+};
 
 export default TiledView;
