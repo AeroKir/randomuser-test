@@ -9,3 +9,6 @@ export const LOGOUT = 'LOGOUT';
 // Contacts page actions
 export const SET_TILED_VIEW = 'SET_TILED_VIEW';
 export const SET_TABLE_VIEW = 'SET_TABLE_VIEW';
+export const CONTACTS_LOADING = 'CONTACTS_LOADING';
+export const GET_CONTACTS_SUCCESS = 'GET_CONTACTS_SUCCESS';
+export const CONTACTS_LOADING_FAIL = 'CONTACTS_LOADING_FAIL';
