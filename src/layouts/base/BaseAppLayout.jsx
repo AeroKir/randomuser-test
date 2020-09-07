@@ -10,7 +10,7 @@ import Footer from '../../components/footer/Footer';
 
 import HomePage from '../../pages/home/HomePage';
 import UserProfilePage from '../../pages/user-profile/UserProfilePage';
-import ContactsPage from '../../pages/contacts/ContactsPage';
+import ContactsPageContainer from '../../pages/contacts/contactsPageContainer';
 import Page404Container from '../../pages/page-404/page404Container';
 
 import './BaseAppLayout.css';
@@ -28,7 +28,7 @@ function BaseAppLayout({ history }) {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/profile" component={UserProfilePage} />
-          <Route exact path="/contacts" component={ContactsPage} />
+          <Route exact path="/contacts" component={ContactsPageContainer} />
           <Route path="*" component={Page404Container} />
         </Switch>
 
