@@ -1,23 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col, Spin } from 'antd';
+import { useRouteMatch } from 'react-router-dom';
 
 import ContactCard from '../contact-card/ContactCard';
 
 function TiledView({
-  contactsCollection,
-  isLoading,
+  contactsCollection, isLoading,
 }) {
+  const { url } = useRouteMatch();
+
   if (isLoading) {
     return (
       <Spin />
     );
   }
+
   return (
     <Row gutter={[16, 20]}>
-      {contactsCollection.map((contact) => (
+      {contactsCollection.map((contact, item) => (
         <Col span={8}>
           <ContactCard
+            url={url}
+            id={item}
+            getId={() => console.log('hey')}
             contactCardImage={contact.picture.medium}
             contactCardTitle={`${contact.name.title}. ${contact.name.first} ${contact.name.last}`}
             contactCardTitleSecondary={`(${contact.dob.age} years)`}
