@@ -10,16 +10,16 @@ import ContactsPage from './ContactsPage';
 const mapStateToProps = ({ contacts }) => {
   const {
     contactsCollection,
+    collectionLength,
+    males,
+    females,
+    indeterminate,
     isLoading,
     isTableView,
     isTiledView,
     contactsPerPage,
     currentPage,
   } = contacts;
-
-  const malesAmount = contactsCollection.filter((contact) => contact.gender === 'male');
-  const femalesAmount = contactsCollection.filter((contact) => contact.gender === 'female');
-  const indeterminateAmount = contactsCollection.filter((contact) => contact.gender === 'indeterminate');
 
   return {
     contactsCollection,
@@ -28,10 +28,10 @@ const mapStateToProps = ({ contacts }) => {
     isTiledView,
     contactsPerPage,
     currentPage,
-    collectionSize: contactsCollection.length,
-    malesAmount: malesAmount.length,
-    femalesAmount: femalesAmount.length,
-    indeterminateAmount: indeterminateAmount.length,
+    collectionSize: collectionLength,
+    malesAmount: males,
+    femalesAmount: females,
+    indeterminateAmount: indeterminate,
   };
 };
 
