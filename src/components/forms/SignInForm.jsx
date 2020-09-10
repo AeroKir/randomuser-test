@@ -17,12 +17,19 @@ const minLength = (min) => (value) => (value && value.length < min ? `The passwo
 const minLength8 = minLength(8);
 
 let SignInForm = ({
-  handleFormSubmit, handleFormClose, submitting, invalid, switchToProfile, isVisible,
+  handleFormSubmit,
+  handleFormClose,
+  submitting,
+  invalid,
+  switchToProfile,
+  handleFetchContacts,
+  isVisible,
 }) => {
   const onClickAction = (e) => {
     e.preventDefault();
     handleFormSubmit(e);
     switchToProfile();
+    handleFetchContacts();
   };
 
   const [passwordShown, setPasswordShown] = useState(false);
@@ -94,6 +101,7 @@ SignInForm.propTypes = {
   handleFormSubmit: PropTypes.func.isRequired,
   handleFormClose: PropTypes.func.isRequired,
   switchToProfile: PropTypes.func.isRequired,
+  handleFetchContacts: PropTypes.func.isRequired,
   submitting: PropTypes.bool.isRequired,
   invalid: PropTypes.bool.isRequired,
   isVisible: PropTypes.bool,

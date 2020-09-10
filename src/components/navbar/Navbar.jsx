@@ -5,13 +5,9 @@ import classNames from 'classnames';
 
 import './Navbar.css';
 
-function Navbar({ isUserLoggedOut, handleFetchContacts }) {
+function Navbar({ isUserLoggedOut }) {
   const navbar = classNames('Navbar');
   const navbarList = classNames('Navbar-list');
-
-  const onClickAction = () => {
-    handleFetchContacts();
-  };
 
   if (isUserLoggedOut) {
     return (
@@ -48,7 +44,6 @@ function Navbar({ isUserLoggedOut, handleFetchContacts }) {
               cursor: 'auto',
               color: '#5a5a5a',
             }}
-            onClick={onClickAction}
           >
             Contacts
           </NavLink>
@@ -60,7 +55,6 @@ function Navbar({ isUserLoggedOut, handleFetchContacts }) {
 
 Navbar.propTypes = {
   isUserLoggedOut: PropTypes.bool.isRequired,
-  handleFetchContacts: PropTypes.func.isRequired,
 };
 
 export default Navbar;

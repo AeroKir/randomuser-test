@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { fetchContacts } from '../../actions/contactsPage';
 import Navbar from './Navbar';
 
 const mapStateToProps = ({ preloadedState }) => {
@@ -8,12 +7,6 @@ const mapStateToProps = ({ preloadedState }) => {
   };
 };
 
-function mapDispatchToProps(dispatch) {
-  return {
-    handleFetchContacts: () => dispatch(fetchContacts()),
-  };
-}
-
-const NavbarContainer = connect(mapStateToProps, mapDispatchToProps)(Navbar);
+const NavbarContainer = connect(mapStateToProps, null)(Navbar);
 
 export default NavbarContainer;
