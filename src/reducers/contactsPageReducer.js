@@ -6,6 +6,7 @@ import {
   GET_CONTACTS_SUCCESS,
   CONTACTS_LOADING_FAIL,
   PAGINATE,
+  LOGOUT,
 } from '../constants/actionTypes';
 
 function contactsPageReducer(state = initialState.contacts, action) {
@@ -40,9 +41,29 @@ function contactsPageReducer(state = initialState.contacts, action) {
     {
       localStorage.setItem('contactsCollection', JSON.stringify(action.payload.contactsData));
 
+      const collection = JSON.parse(localStorage.getItem('contactsCollection')) || [];
+
+      localStorage.setItem('collectionLength', JSON.stringify(collection.length));
+
+      const males = JSON.parse(localStorage.getItem('contactsCollection')) || [];
+      const malesAmount = males.filter((contact) => contact.gender === 'male').length;
+      localStorage.setItem('malesAmount', JSON.stringify(malesAmount));
+
+      const females = JSON.parse(localStorage.getItem('contactsCollection')) || [];
+      const femalesAmount = females.filter((contact) => contact.gender === 'female').length;
+      localStorage.setItem('femalesAmount', JSON.stringify(femalesAmount));
+
+      const indeterminate = JSON.parse(localStorage.getItem('contactsCollection')) || [];
+      const indeterminateAmount = indeterminate.filter((contact) => contact.gender === 'indeterminate');
+      localStorage.setItem('indeterminateAmount', JSON.stringify(indeterminateAmount));
+
       return {
         ...state,
-        contactsCollection: action.payload.contactsData,
+        contactsCollection: collection,
+        collectionLength: JSON.parse(localStorage.getItem('collectionLength')),
+        males: JSON.parse(localStorage.getItem('malesAmount')),
+        females: JSON.parse(localStorage.getItem('femalesAmount')),
+        indeterminate: JSON.parse(localStorage.getItem('indeterminateAmount')),
         isLoading: false,
       };
     }
@@ -53,6 +74,24 @@ function contactsPageReducer(state = initialState.contacts, action) {
         ...state,
         currentPage: action.payload.currentPageNumber,
         contactsPerPage: action.payload.pageSize,
+      };
+    }
+
+    case LOGOUT:
+    {
+      return {
+        isTableView: true,
+        isTiledView: false,
+        isLoading: false,
+        contactsCollection: [],
+        collectionLength: 0,
+        males: 0,
+        females: 0,
+        indeterminate: 0,
+        contactsPerPage: 10,
+        defaultCurrentPage: 1,
+        currentPage: 1,
+        isContactProfileLoading: false,
       };
     }
 
