@@ -1,3 +1,5 @@
+import { push } from 'connected-react-router';
+
 import createAction from './createAction';
 import {
   SET_TILED_VIEW,
@@ -25,9 +27,10 @@ function handleErrors(response) {
 export function fetchContacts() {
   return (dispatch) => {
     const numberOfContacts = JSON.parse(localStorage.getItem('numberOfContacts'));
-    const urlContacts = `https://randomuser.me/api/?results=${numberOfContacts}`;
 
     dispatch(contactsLoading());
+
+    const urlContacts = `https://randomuser.me/api/?results=${numberOfContacts}`;
 
     fetch(urlContacts)
       .then(handleErrors)
@@ -37,5 +40,11 @@ export function fetchContacts() {
         return json;
       })
       .catch(() => { });
+  };
+}
+
+export function backToContacts() {
+  return (dispatch) => {
+    dispatch(push('/contacts'));
   };
 }
