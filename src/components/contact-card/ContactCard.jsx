@@ -6,6 +6,7 @@ import {
   Divider,
   Tag,
 } from 'antd';
+import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 
 import AppImage from '../image/AppImage';
@@ -14,6 +15,9 @@ import 'antd/dist/antd.css';
 import './ContactCard.css';
 
 function ContactCard({
+  url,
+  id,
+  getId,
   contactCardImage,
   contactCardTitle,
   contactCardTitleSecondary,
@@ -29,21 +33,29 @@ function ContactCard({
   const userContactsList = classNames('UserProfile-userContactsList');
   const userContactsItem = classNames('UserProfile-userContactsItem');
 
+  const handleClick = (item) => {
+    getId(item);
+  };
+
   return (
 
     <Card
       hoverable
       cover={<AppImage src={contactCardImage} />}
     >
-      <Title level={3} style={{ textAlign: 'left' }}>
-        {contactCardTitle}
-        <Text
-          type="secondary"
-          style={{ fontSize: '19px', paddingLeft: '5px' }}
-        >
-          {contactCardTitleSecondary}
-        </Text>
-      </Title>
+
+      <NavLink url={url} to={`${url}/${id}`} onClick={handleClick(id)}>
+        <Title level={3} style={{ textAlign: 'left' }}>
+          {contactCardTitle}
+          <Text
+            type="secondary"
+            style={{ fontSize: '19px', paddingLeft: '5px' }}
+          >
+            {contactCardTitleSecondary}
+          </Text>
+        </Title>
+      </NavLink>
+
       <Divider dashed style={{ margin: '12px 0' }} />
 
       <ul className={userContactsList}>
@@ -69,6 +81,12 @@ function ContactCard({
 }
 
 ContactCard.propTypes = {
+  url: PropTypes.string.isRequired,
+  id: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]).isRequired,
+  getId: PropTypes.func.isRequired,
   contactCardImage: PropTypes.string,
   contactCardTitle: PropTypes.string,
   contactCardTitleSecondary: PropTypes.string,
