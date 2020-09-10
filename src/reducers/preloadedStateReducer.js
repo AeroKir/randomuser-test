@@ -38,6 +38,7 @@ function preloadedStateReducer(state = initialState, action) {
 
     case USER_DATA_LOADING:
     {
+      localStorage.setItem('numberOfContacts', JSON.stringify(generateRandomIntegerInRange(1, 200)));
       return {
         ...state,
         isLoading: true,
@@ -52,7 +53,6 @@ function preloadedStateReducer(state = initialState, action) {
     case GET_USER:
     {
       localStorage.setItem('user', JSON.stringify(action.payload.userData));
-      localStorage.setItem('numberOfContacts', JSON.stringify(generateRandomIntegerInRange(1, 200)));
 
       return {
         ...state,
