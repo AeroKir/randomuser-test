@@ -6,6 +6,7 @@ import {
   GET_USER, GET_USER_AUTH_DATA,
   SWITCH_TO_USER_PROFILE,
   USER_DATA_LOADING,
+  USER_DATA_LOADING_FAIL,
   LOGOUT,
 } from '../constants/actionTypes';
 
@@ -45,6 +46,16 @@ function preloadedStateReducer(state = initialState, action) {
       };
     }
 
+    case USER_DATA_LOADING_FAIL:
+    {
+      return {
+        ...state,
+        isLoading: false,
+        isLoadingFail: true,
+        user: [],
+      };
+    }
+
     case GET_USER_AUTH_DATA:
     {
       return { ...state, userEmail: action.payload.email, userPassword: action.payload.password };
@@ -60,6 +71,7 @@ function preloadedStateReducer(state = initialState, action) {
         isUserSignedIn: true,
         user: action.payload.userData,
         isLoading: false,
+        isLoadingFail: false,
       };
     }
 

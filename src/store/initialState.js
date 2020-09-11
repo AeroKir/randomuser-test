@@ -3,6 +3,7 @@ const initialState = {
     isSignInFormShowed: false,
     isUserSignedIn: !!localStorage.getItem('user'),
     isLoading: false,
+    isLoadingFail: false,
     user: JSON.parse(localStorage.getItem('user')) || {},
     userEmail: '',
     userPassword: '',

@@ -7,12 +7,14 @@ import {
   GET_USER, GET_USER_AUTH_DATA,
   SWITCH_TO_USER_PROFILE,
   USER_DATA_LOADING,
+  USER_DATA_LOADING_FAIL,
 } from '../constants/actionTypes';
 
 export const showSignInForm = createAction(SHOW_SIGN_IN_FORM);
 export const hideSignInForm = createAction(HIDE_SIGN_IN_FORM);
 export const switchToUserProfile = createAction(SWITCH_TO_USER_PROFILE);
 export const userDataLoading = createAction(USER_DATA_LOADING);
+export const userDataLoadingFail = createAction(USER_DATA_LOADING_FAIL);
 
 export function getUser(userData) {
   return {
@@ -28,13 +30,6 @@ export function getUserAuthData(email, password) {
   };
 }
 
-function handleErrors(response) {
-  if (!response.ok) {
-    throw Error(response.statusText);
-  }
-  return response;
-}
-
 export function fetchUser() {
   return (dispatch, getState) => {
     const state = getState();
@@ -47,7 +42,12 @@ export function fetchUser() {
     const url = `https://randomuser.me/api/?seed=${userEmail}`;
 
     fetch(url)
-      .then(handleErrors)
+      .then((response) => {
+        if (!response.ok) {
+          dispatch(userDataLoadingFail());
+        }
+        return response;
+      })
       .then((response) => response.json())
       .then((json) => {
         dispatch(getUser(json.results));
