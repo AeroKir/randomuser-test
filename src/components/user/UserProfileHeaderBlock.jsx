@@ -9,6 +9,7 @@ import {
   Divider,
   Typography,
   Spin,
+  message,
 } from 'antd';
 import { DownOutlined, UserOutlined, LogoutOutlined } from '@ant-design/icons';
 import classNames from 'classnames';
@@ -25,9 +26,14 @@ function UserProfileHeaderBlock({
   const userProfileHeaderBlock = classNames('UserProfileHeaderBlock');
   const userProfileHeaderBlockButton = classNames('UserProfileHeaderBlock-button');
 
+  const success = () => {
+    message.success('Successfully logged out');
+  };
+
   const handleLogout = () => {
     logout();
     goHomePage();
+    success();
   };
   const { Text } = Typography;
 
