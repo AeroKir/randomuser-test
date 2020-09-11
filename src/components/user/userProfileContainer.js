@@ -1,19 +1,20 @@
 import { connect } from 'react-redux';
-import { showSignInForm } from '../../actions/signInForm';
+import { fetchUser } from '../../actions/signInForm';
 import UserProfile from './UserProfile';
 
 const mapStateToProps = ({ preloadedState }) => {
-  const { user, isLoading } = preloadedState;
+  const { user, isLoading, isLoadingFail } = preloadedState;
 
   return {
     userData: user,
     isUserDataLoading: isLoading,
+    isUserDataLoadingFail: isLoadingFail,
   };
 };
 
 function mapDispatchToProps(dispatch) {
   return {
-    handleSignIn: () => dispatch(showSignInForm()),
+    attemptUserUpdate: () => dispatch(fetchUser()),
   };
 }
 

@@ -43,6 +43,7 @@ function preloadedStateReducer(state = initialState, action) {
       return {
         ...state,
         isLoading: true,
+        isLoadingFail: false,
       };
     }
 
@@ -52,7 +53,6 @@ function preloadedStateReducer(state = initialState, action) {
         ...state,
         isLoading: false,
         isLoadingFail: true,
-        user: [],
       };
     }
 

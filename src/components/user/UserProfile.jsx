@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Typography, Divider, Tag, Spin,
+  Typography, Divider, Tag, Spin, Alert,
 } from 'antd';
 import classNames from 'classnames';
 
@@ -13,6 +13,8 @@ import './UserProfile.css';
 function UserProfile({
   userData,
   isUserDataLoading,
+  isUserDataLoadingFail,
+  attemptUserUpdate,
 }) {
   const { Title, Text } = Typography;
 
@@ -23,8 +25,24 @@ function UserProfile({
   const userContactsList = classNames('UserProfile-userContactsList');
   const userContactsItem = classNames('UserProfile-userContactsItem');
 
+  const handleAlertClose = () => {
+    attemptUserUpdate();
+  };
+
   if (isUserDataLoading) {
     return <Spin size="large" />;
+  }
+
+  if (isUserDataLoadingFail) {
+    return (
+      <Alert
+        type="error"
+        message="Something went wrong. Please try again later"
+        showIcon
+        closable
+        onClose={handleAlertClose}
+      />
+    );
   }
 
   return (
@@ -94,6 +112,8 @@ function UserProfile({
 
 UserProfile.propTypes = {
   isUserDataLoading: PropTypes.bool,
+  isUserDataLoadingFail: PropTypes.bool,
+  attemptUserUpdate: PropTypes.func,
   userData: PropTypes.arrayOf(PropTypes.shape({
     gender: PropTypes.string,
     name: {
@@ -153,6 +173,8 @@ UserProfile.propTypes = {
 
 UserProfile.defaultProps = {
   isUserDataLoading: false,
+  isUserDataLoadingFail: false,
+  attemptUserUpdate: () => { },
   userData: [
     {
       gender: 'male',
