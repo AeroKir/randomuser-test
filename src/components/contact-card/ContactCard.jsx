@@ -1,15 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Card,
-  Typography,
-  Divider,
-  Tag,
-} from 'antd';
+import { Card, Typography, Divider } from 'antd';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 
 import AppImage from '../image/AppImage';
+import NationalityTag from '../nationality-tag/NationalityTag';
 
 import 'antd/dist/antd.css';
 import './ContactCard.css';
@@ -74,7 +70,7 @@ function ContactCard({
       </ul>
 
       <Divider dashed style={{ margin: '12px 0' }} />
-      <Tag>{contactCardNationality}</Tag>
+      <NationalityTag userNationality={contactCardNationality} />
     </Card>
 
   );

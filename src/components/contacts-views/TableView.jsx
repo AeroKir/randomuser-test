@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Table, Avatar, Tag, Typography, Spin,
+  Table, Avatar, Typography, Spin,
 } from 'antd';
+import NationalityTag from '../nationality-tag/NationalityTag';
 
 function TableView({ contactsCollection, isLoading }) {
   const { Text } = Typography;
@@ -66,7 +67,7 @@ function TableView({ contactsCollection, isLoading }) {
       title: 'Nationality',
       dataIndex: 'nationality',
       key: 'nationality',
-      render: (nationality) => (<Tag>{nationality}</Tag>),
+      render: (nationality) => (<NationalityTag userNationality={nationality} />),
       align: 'right',
     },
   ];

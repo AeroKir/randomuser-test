@@ -1,11 +1,12 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Typography, Divider, Tag, Spin, Alert,
+  Typography, Divider, Spin, Alert,
 } from 'antd';
 import classNames from 'classnames';
 
 import AppImage from '../image/AppImage';
+import NationalityTag from '../nationality-tag/NationalityTag';
 
 import 'antd/dist/antd.css';
 import './UserProfile.css';
@@ -100,11 +101,10 @@ function UserProfile({
               </ul>
 
               <Divider dashed style={{ margin: '12px 0' }} />
-              <Tag>{user.nat}</Tag>
+              <NationalityTag userNationality={user.nat} />
             </div>
           </Fragment>
         ))}
-
       </div>
     </div>
   );
