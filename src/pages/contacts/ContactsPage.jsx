@@ -142,7 +142,9 @@ function ContactsPage({
               </Col>
             </Row>
             <Text type="secondary">Nationalities</Text>
-            <StatisticBlock />
+            <StatisticBlock
+              contactsData={contactsCollection}
+            />
           </div>
         </Space>
 

@@ -1,104 +1,49 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Row,
   Col,
   Typography,
 } from 'antd';
-import classNames from 'classnames';
 
-function StatisticBlock() {
-  const statData = {
-    nationalities: [
-      {
-        nationality: 'New Zealander',
-        contacts: 15,
-      },
-      {
-        nationality: 'Australian',
-        contacts: 15,
-      },
-      {
-        nationality: 'British',
-        contacts: 15,
-      },
-      {
-        nationality: 'Spanish',
-        contacts: 15,
-      },
-      {
-        nationality: 'Finnish',
-        contacts: 15,
-      },
-      {
-        nationality: 'Danish',
-        contacts: 15,
-      },
-      {
-        nationality: 'Swiss',
-        contacts: 15,
-      },
-      {
-        nationality: 'Canadian',
-        contacts: 15,
-      },
-      {
-        nationality: 'French',
-        contacts: 15,
-      },
-      {
-        nationality: 'Dutch',
-        contacts: 15,
-      },
-      {
-        nationality: 'Norwegian',
-        contacts: 15,
-      },
-      {
-        nationality: 'Turkish',
-        contacts: 15,
-      },
-      {
-        nationality: 'Irish',
-        contacts: 15,
-      },
-      {
-        nationality: 'Brazilian',
-        contacts: 15,
-      },
-      {
-        nationality: 'German',
-        contacts: 15,
-      },
-      {
-        nationality: 'Iranian',
-        contacts: 15,
-      },
-      {
-        nationality: 'American',
-        contacts: 15,
-      },
-    ],
-  };
+import NATIONALITIES from '../../constants/nationalities';
 
+function StatisticBlock({ contactsData }) {
   const { Text } = Typography;
+
   return (
     <Row gutter={[16, 14]} justify="start" style={{ width: '90%' }}>
-      {statData.nationalities.map((nationalityItem) => (
-        <Col className="gutter-row" span={4} style={{ textAlign: 'left' }}>
-          <Text strong>
-            {nationalityItem.nationality}
-            :
-            {' '}
-          </Text>
-          <Text type="secondary" ellipsis>
-            {nationalityItem.contacts}
-            {' '}
-            contacts
-          </Text>
-        </Col>
-      ))}
+      {
+        Object.keys(NATIONALITIES).map((nationality, item) => {
+          const nationalityName = Object.values(NATIONALITIES)[item].name;
+          const nationalityAmount = contactsData.filter((contact) => contact.nat === nationality);
+
+          return (
+            <Col className="gutter-row" span={4} style={{ textAlign: 'left' }}>
+              <Text strong>
+                {nationalityName}
+                :
+                {' '}
+              </Text>
+              <Text type="secondary" ellipsis>
+                {nationalityAmount.length}
+                {' '}
+                {nationalityAmount.length === 1 ? 'contact' : 'contacts'}
+              </Text>
+            </Col>
+          );
+        })
+      }
     </Row>
   );
 }
+
+StatisticBlock.propTypes = {
+  contactsData: PropTypes.arrayOf(PropTypes.object),
+};
+
+StatisticBlock.defaultProps = {
+  contactsData: [{}],
+};
 
 export default StatisticBlock;
