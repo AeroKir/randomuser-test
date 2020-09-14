@@ -30,7 +30,8 @@ function TiledView({
             contactCardEmail={contact.email}
             contactCardPhone={contact.phone}
             contactCardLocation={
-              `${contact.location.street.number}
+              `/${contact.location.country}/
+               ${contact.location.street.number}
                ${contact.location.street.name},
                ${contact.location.city},
                ${contact.location.state}

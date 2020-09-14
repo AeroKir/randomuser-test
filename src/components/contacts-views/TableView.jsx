@@ -79,11 +79,12 @@ function TableView({ contactsCollection, isLoading }) {
     birthday: `${contact.dob.date} ${contact.dob.age} years`,
     email: contact.email,
     phone: contact.phone,
-    location: `${contact.location.street.number}
-                 ${contact.location.street.name},
-                 ${contact.location.city},
-                 ${contact.location.state}
-                 ${contact.location.postcode}`,
+    location: `/${contact.location.country}/
+                ${contact.location.street.number}
+                ${contact.location.street.name},
+                ${contact.location.city},
+                ${contact.location.state}
+                ${contact.location.postcode}`,
     nationality: contact.nat,
   }));
 
