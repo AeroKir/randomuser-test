@@ -20,7 +20,7 @@ function TableView({ contactsCollection, isLoading }) {
       title: 'Full Name',
       dataIndex: 'fullName',
       key: 'fullName',
-      sorter: (a, b) => a.fullName - b.fullName,
+      sorter: (a, b) => a.fullName.localeCompare(b.fullName),
       width: 170,
     },
     {
