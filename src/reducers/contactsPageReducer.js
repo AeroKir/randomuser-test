@@ -6,8 +6,13 @@ import {
   GET_CONTACTS_SUCCESS,
   CONTACTS_LOADING_FAIL,
   PAGINATE,
+  FILTER_BY_GENDER,
+  FILTER_BY_NATIONALITY,
   LOGOUT,
 } from '../constants/actionTypes';
+
+import NATIONALITIES from '../constants/nationalities';
+import isSomeAvailable from '../utils/checkAvailability';
 
 function contactsPageReducer(state = initialState.contacts, action) {
   switch (action.type) {
@@ -74,6 +79,46 @@ function contactsPageReducer(state = initialState.contacts, action) {
         ...state,
         currentPage: action.payload.currentPageNumber,
         contactsPerPage: action.payload.pageSize,
+      };
+    }
+
+    case FILTER_BY_GENDER:
+    {
+      const collection = JSON.parse(localStorage.getItem('contactsCollection')) || [];
+
+      if (!action.payload.gender) {
+        return {
+          ...state,
+          contactsCollection: collection,
+        };
+      }
+      return {
+        ...state,
+        contactsCollection: collection.filter((contact) => contact.gender === action.payload.gender),
+      };
+    }
+
+    case FILTER_BY_NATIONALITY:
+    {
+      const checkedNationalities = action.payload.nationalities;
+      const collection = JSON.parse(localStorage.getItem('contactsCollection')) || [];
+
+      const nationalitiesCollection = [];
+
+      Object.keys(NATIONALITIES).map((nationality, item) => {
+        const { name } = Object.values(NATIONALITIES)[item];
+
+        if (isSomeAvailable(checkedNationalities, name)) {
+          const filteredNationalities = collection.filter((contact) => contact.nat === nationality);
+          filteredNationalities.forEach((element) => nationalitiesCollection.push(element));
+          return nationalitiesCollection;
+        }
+        return nationalitiesCollection;
+      });
+
+      return {
+        ...state,
+        contactsCollection: nationalitiesCollection,
       };
     }
 

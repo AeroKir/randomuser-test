@@ -16,7 +16,7 @@ import {
 } from '@ant-design/icons';
 import classNames from 'classnames';
 
-import ContactsSearchFilterForm from '../../components/forms/ContactsSearchFilterForm';
+import ContactsSearchFilterFormContainer from '../../components/forms/contactsSearchFilterFormContainer';
 import TableView from '../../components/contacts-views/TableView';
 import TiledView from '../../components/contacts-views/TiledView';
 import StatisticBlock from '../../components/statistic/StatisticBlock';
@@ -102,7 +102,7 @@ function ContactsPage({
         }}
         >
           <div className={serviceContainer}>
-            <ContactsSearchFilterForm active />
+            <ContactsSearchFilterFormContainer active />
           </div>
         </Space>
 

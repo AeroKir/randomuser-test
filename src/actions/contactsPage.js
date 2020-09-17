@@ -8,6 +8,8 @@ import {
   GET_CONTACTS_SUCCESS,
   CONTACTS_LOADING_FAIL,
   PAGINATE,
+  FILTER_BY_GENDER,
+  FILTER_BY_NATIONALITY,
 } from '../constants/actionTypes';
 
 export const setTiledView = createAction(SET_TILED_VIEW);
@@ -16,6 +18,8 @@ export const contactsLoading = createAction(CONTACTS_LOADING);
 export const getContactsSuccess = createAction(GET_CONTACTS_SUCCESS, 'contactsData');
 export const contactsLoadingFail = createAction(CONTACTS_LOADING_FAIL);
 export const paginate = createAction(PAGINATE, 'currentPageNumber', 'pageSize');
+export const filterByGender = createAction(FILTER_BY_GENDER, 'gender');
+export const filterByNationality = createAction(FILTER_BY_NATIONALITY, 'nationalities');
 
 function handleErrors(response) {
   if (!response.ok) {

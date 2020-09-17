@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Form,
   Input,
@@ -8,48 +9,57 @@ import {
 } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 
-function ContactsSearchFilterForm() {
+import NATIONALITIES from '../../constants/nationalities';
+
+function ContactsSearchFilterForm({ genderFilter, nationalityFilter }) {
   const { Option } = Select;
-  const nationalities = [
-    { value: 'American' },
-    { value: 'Australian' },
-    { value: 'Brazilian' },
-    { value: 'British' },
-    { value: 'Canadian' },
-    { value: 'Danish' },
-    { value: 'Dutch' },
-    { value: 'Finnish' },
-    { value: 'French' },
-    { value: 'German' },
-    { value: 'Iranian' },
-    { value: 'Irish' },
-    { value: 'New Zealander' },
-    { value: 'Norwegian' },
-    { value: 'Spanish' },
-    { value: 'Swiss' },
-    { value: 'Turkish' },
-  ];
+
+  const handleGenderFilter = (genderValue) => {
+    genderFilter(genderValue);
+  };
+
+  const handleNationalityFilter = (nationalityValue) => {
+    nationalityFilter(nationalityValue);
+  };
 
   return (
     <Form layout="inline">
 
       <Form.Item>
-        <Input.Search placeholder="Search by full name" size="large" style={{ width: 530 }} />
+        <Input.Search
+          placeholder="Search by full name"
+          size="large"
+          style={{ width: 530 }}
+          onSearch={(value) => console.log(value)}
+        />
       </Form.Item>
 
       <Form.Item>
-        <Select placeholder="Gender" size="large" style={{ width: 195 }}>
-          <Option>Male</Option>
-          <Option>Female</Option>
-          <Option>Indeterminate</Option>
+        <Select
+          placeholder="Gender"
+          size="large"
+          allowClear
+          style={{ width: 195 }}
+          onChange={handleGenderFilter}
+        >
+          <Option value="male">Male</Option>
+          <Option value="female">Female</Option>
+          <Option value="indeterminate">Indeterminate</Option>
         </Select>
       </Form.Item>
 
       <Form.Item>
-        <Select placeholder="Nationality" mode="tags" size="large" style={{ width: 245 }}>
-          {nationalities.map((nationality) => (
-            <Option value={nationality.value}>{nationality.value}</Option>
-          ))}
+        <Select
+          placeholder="Nationality"
+          mode="tags"
+          size="large"
+          style={{ width: 245 }}
+          onChange={handleNationalityFilter}
+        >
+          {Object.keys(NATIONALITIES).map((nat, item) => {
+            const nationalityName = Object.values(NATIONALITIES)[item].name;
+            return <Option value={nationalityName}>{nationalityName}</Option>;
+          })}
         </Select>
       </Form.Item>
 
@@ -63,6 +73,7 @@ function ContactsSearchFilterForm() {
           type="link"
           icon={<CloseOutlined />}
           style={{ marginLeft: '10px' }}
+          disabled
         >
           Clear
         </Button>
@@ -71,5 +82,10 @@ function ContactsSearchFilterForm() {
     </Form>
   );
 }
+
+ContactsSearchFilterForm.propTypes = {
+  genderFilter: PropTypes.func.isRequired,
+  nationalityFilter: PropTypes.func.isRequired,
+};
 
 export default ContactsSearchFilterForm;
