@@ -100,7 +100,7 @@ function contactsPageReducer(state = initialState.contacts, action) {
 
     case FILTER_BY_NATIONALITY:
     {
-      const checkedNationalities = action.payload.nationalities;
+      const pickedNationalities = action.payload.nationalities;
       const collection = JSON.parse(localStorage.getItem('contactsCollection')) || [];
 
       const nationalitiesCollection = [];
@@ -108,7 +108,7 @@ function contactsPageReducer(state = initialState.contacts, action) {
       Object.keys(NATIONALITIES).map((nationality, item) => {
         const { name } = Object.values(NATIONALITIES)[item];
 
-        if (isSomeAvailable(checkedNationalities, name)) {
+        if (isSomeAvailable(pickedNationalities, name)) {
           const filteredNationalities = collection.filter((contact) => contact.nat === nationality);
           filteredNationalities.forEach((element) => nationalitiesCollection.push(element));
           return nationalitiesCollection;
