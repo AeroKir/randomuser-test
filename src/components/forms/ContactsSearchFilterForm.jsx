@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
   Form,
@@ -11,8 +11,18 @@ import { CloseOutlined } from '@ant-design/icons';
 
 import NATIONALITIES from '../../constants/nationalities';
 
-function ContactsSearchFilterForm({ genderFilter, nationalityFilter }) {
+function ContactsSearchFilterForm({
+  nameFilter, genderFilter, nationalityFilter,
+}) {
   const { Option } = Select;
+
+  const [queryValue, setQueryValue] = useState('');
+  const nameQuery = queryValue;
+
+  useEffect(() => {
+    const timer = setTimeout(() => nameFilter(nameQuery), 500);
+    return () => clearTimeout(timer);
+  }, [nameQuery]);
 
   const handleGenderFilter = (genderValue) => {
     genderFilter(genderValue);
@@ -29,8 +39,11 @@ function ContactsSearchFilterForm({ genderFilter, nationalityFilter }) {
         <Input.Search
           placeholder="Search by full name"
           size="large"
+          allowClear
           style={{ width: 530 }}
+          value={queryValue}
           onSearch={(value) => console.log(value)}
+          onChange={(e) => setQueryValue(e.target.value)}
         />
       </Form.Item>
 
@@ -84,6 +97,7 @@ function ContactsSearchFilterForm({ genderFilter, nationalityFilter }) {
 }
 
 ContactsSearchFilterForm.propTypes = {
+  nameFilter: PropTypes.func.isRequired,
   genderFilter: PropTypes.func.isRequired,
   nationalityFilter: PropTypes.func.isRequired,
 };

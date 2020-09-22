@@ -6,6 +6,7 @@ import {
   GET_CONTACTS_SUCCESS,
   CONTACTS_LOADING_FAIL,
   PAGINATE,
+  FILTER_BY_NAME,
   FILTER_BY_GENDER,
   FILTER_BY_NATIONALITY,
   LOGOUT,
@@ -79,6 +80,41 @@ function contactsPageReducer(state = initialState.contacts, action) {
         ...state,
         currentPage: action.payload.currentPageNumber,
         contactsPerPage: action.payload.pageSize,
+      };
+    }
+
+    case FILTER_BY_NAME:
+    {
+      const serarchNameValue = action.payload.name;
+      const collection = JSON.parse(localStorage.getItem('contactsCollection')) || [];
+
+      const filteredByNameCollection = [];
+
+      collection.map((contact) => {
+        const { name } = contact;
+        const nameValue = Object.values(name);
+
+        nameValue.map((value) => {
+          if (value.toLowerCase().includes(serarchNameValue.toLowerCase())) {
+            filteredByNameCollection.push(contact);
+            return filteredByNameCollection;
+          }
+          return [];
+        });
+
+        return filteredByNameCollection;
+      });
+
+      if (!serarchNameValue) {
+        return {
+          ...state,
+          contactsCollection: collection,
+        };
+      }
+
+      return {
+        ...state,
+        contactsCollection: filteredByNameCollection,
       };
     }
 

@@ -1,11 +1,12 @@
 import { connect } from 'react-redux';
-import { filterByGender, filterByNationality } from '../../actions/contactsPage';
+import { filterByGender, filterByNationality, filterByName } from '../../actions/contactsPage';
 import ContactsSearchFilterForm from './ContactsSearchFilterForm';
 
 function mapDispatchToProps(dispatch) {
   return {
     genderFilter: (genderValue) => dispatch(filterByGender(genderValue)),
     nationalityFilter: (nationalityValue) => dispatch(filterByNationality(nationalityValue)),
+    nameFilter: (nameValue) => dispatch(filterByName(nameValue)),
   };
 }
 
