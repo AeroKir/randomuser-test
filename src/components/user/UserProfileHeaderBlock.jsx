@@ -82,7 +82,10 @@ UserProfileHeaderBlock.propTypes = {
   logout: PropTypes.func.isRequired,
   goHomePage: PropTypes.func.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
-  userData: PropTypes.array,
+  userData: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.object,
+  ]),
 };
 
 UserProfileHeaderBlock.defaultProps = {
