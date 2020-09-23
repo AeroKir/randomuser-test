@@ -12,7 +12,7 @@ import { CloseOutlined } from '@ant-design/icons';
 import NATIONALITIES from '../../constants/nationalities';
 
 function ContactsSearchFilterForm({
-  nameFilter, genderFilter, nationalityFilter,
+  nameFilter, genderFilter, nationalityFilter, isContactFilterClearDisabled, handleClearForm,
 }) {
   const { Option } = Select;
 
@@ -42,7 +42,6 @@ function ContactsSearchFilterForm({
           allowClear
           style={{ width: 530 }}
           value={queryValue}
-          onSearch={(value) => console.log(value)}
           onChange={(e) => setQueryValue(e.target.value)}
         />
       </Form.Item>
@@ -86,7 +85,8 @@ function ContactsSearchFilterForm({
           type="link"
           icon={<CloseOutlined />}
           style={{ marginLeft: '10px' }}
-          disabled
+          disabled={isContactFilterClearDisabled}
+          onClick={handleClearForm}
         >
           Clear
         </Button>
@@ -100,6 +100,12 @@ ContactsSearchFilterForm.propTypes = {
   nameFilter: PropTypes.func.isRequired,
   genderFilter: PropTypes.func.isRequired,
   nationalityFilter: PropTypes.func.isRequired,
+  handleClearForm: PropTypes.func.isRequired,
+  isContactFilterClearDisabled: PropTypes.bool,
+};
+
+ContactsSearchFilterForm.defaultProps = {
+  isContactFilterClearDisabled: true,
 };
 
 export default ContactsSearchFilterForm;
