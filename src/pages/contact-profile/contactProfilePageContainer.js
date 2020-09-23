@@ -3,8 +3,9 @@ import { backToContacts } from '../../actions/contactsPage';
 import ContactProfilePage from './ContactProfilePage';
 
 function mapStateToProps({ contacts }) {
-  const { isContactProfileLoading } = contacts;
+  const { contactsCollection, isContactProfileLoading } = contacts;
   return {
+    contactsCollection,
     isLoading: isContactProfileLoading,
   };
 }
