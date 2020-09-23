@@ -11,6 +11,7 @@ import {
   FILTER_BY_GENDER,
   FILTER_BY_NATIONALITY,
   FILTER_BY_NAME,
+  CLEAR_FILTERS_FORM,
 } from '../constants/actionTypes';
 
 export const setTiledView = createAction(SET_TILED_VIEW);
@@ -22,6 +23,7 @@ export const paginate = createAction(PAGINATE, 'currentPageNumber', 'pageSize');
 export const filterByGender = createAction(FILTER_BY_GENDER, 'gender');
 export const filterByNationality = createAction(FILTER_BY_NATIONALITY, 'nationalities');
 export const filterByName = createAction(FILTER_BY_NAME, 'name');
+export const clearFiltersForm = createAction(CLEAR_FILTERS_FORM);
 
 function handleErrors(response) {
   if (!response.ok) {

@@ -9,6 +9,7 @@ import {
   FILTER_BY_NAME,
   FILTER_BY_GENDER,
   FILTER_BY_NATIONALITY,
+  CLEAR_FILTERS_FORM,
   LOGOUT,
 } from '../constants/actionTypes';
 
@@ -115,6 +116,7 @@ function contactsPageReducer(state = initialState.contacts, action) {
       return {
         ...state,
         contactsCollection: filteredByNameCollection,
+        isContactFilterClearDisabled: false,
       };
     }
 
@@ -131,6 +133,7 @@ function contactsPageReducer(state = initialState.contacts, action) {
       return {
         ...state,
         contactsCollection: collection.filter((contact) => contact.gender === action.payload.gender),
+        isContactFilterClearDisabled: false,
       };
     }
 
@@ -155,6 +158,18 @@ function contactsPageReducer(state = initialState.contacts, action) {
       return {
         ...state,
         contactsCollection: nationalitiesCollection,
+        isContactFilterClearDisabled: false,
+      };
+    }
+
+    case CLEAR_FILTERS_FORM:
+    {
+      const collection = JSON.parse(localStorage.getItem('contactsCollection')) || [];
+
+      return {
+        ...state,
+        contactsCollection: collection,
+        isContactFilterClearDisabled: true,
       };
     }
 
