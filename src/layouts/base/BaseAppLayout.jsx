@@ -11,7 +11,6 @@ import Footer from '../../components/footer/Footer';
 import HomePage from '../../pages/home/HomePage';
 import UserProfilePage from '../../pages/user-profile/UserProfilePage';
 import ContactsPageContainer from '../../pages/contacts/contactsPageContainer';
-import ContactProfilePage from '../../pages/contact-profile/ContactProfilePage';
 import ContactProfilePageContainer from '../../pages/contact-profile/contactProfilePageContainer';
 import Page404Container from '../../pages/page-404/page404Container';
 
@@ -19,7 +18,6 @@ import './BaseAppLayout.css';
 
 function BaseAppLayout({ history }) {
   const layout = classNames('BaseAppLayout');
-  const { location: { pathname } } = history;
 
   return (
     <Router history={history}>
@@ -34,9 +32,8 @@ function BaseAppLayout({ history }) {
           <Route exact path="/contacts" component={ContactsPageContainer} />
           <Route
             exact
-            path={pathname}
+            path="/contacts/:contactId"
             render={() => <ContactProfilePageContainer />}
-            // component={ContactProfilePage}
           />
           <Route exact path="*" component={Page404Container} />
         </Switch>
