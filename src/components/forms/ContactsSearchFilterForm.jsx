@@ -70,7 +70,7 @@ function ContactsSearchFilterForm({
         >
           {Object.keys(NATIONALITIES).map((nat, item) => {
             const nationalityName = Object.values(NATIONALITIES)[item].name;
-            return <Option value={nationalityName}>{nationalityName}</Option>;
+            return <Option key={nationalityName} value={nationalityName}>{nationalityName}</Option>;
           })}
         </Select>
       </Form.Item>

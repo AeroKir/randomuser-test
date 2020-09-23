@@ -7,6 +7,8 @@ import {
 } from 'antd';
 
 import NATIONALITIES from '../../constants/nationalities';
+import generateKey from '../../utils/generateKey';
+
 
 function StatisticBlock({ contactsData }) {
   const { Text } = Typography;
@@ -19,7 +21,7 @@ function StatisticBlock({ contactsData }) {
           const nationalityAmount = contactsData.filter((contact) => contact.nat === nationality);
 
           return (
-            <Col className="gutter-row" span={4} style={{ textAlign: 'left' }}>
+            <Col key={generateKey()} className="gutter-row" span={4} style={{ textAlign: 'left' }}>
               <Text strong>
                 {nationalityName}
                 :

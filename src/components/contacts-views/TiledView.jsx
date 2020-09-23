@@ -4,6 +4,7 @@ import { Row, Col, Spin } from 'antd';
 import { useRouteMatch } from 'react-router-dom';
 
 import ContactCard from '../contact-card/ContactCard';
+import generateKey from '../../utils/generateKey';
 
 function TiledView({
   contactsCollection, isLoading,
@@ -19,8 +20,9 @@ function TiledView({
   return (
     <Row gutter={[16, 20]}>
       {contactsCollection.map((contact, item) => (
-        <Col span={8}>
+        <Col key={generateKey()} span={8}>
           <ContactCard
+            key={generateKey()}
             url={url}
             id={item + 1}
             contactCardImage={contact.picture.medium}
