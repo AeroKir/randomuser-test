@@ -21,6 +21,7 @@ const initialState = {
     defaultCurrentPage: 1,
     currentPage: 1,
     isContactProfileLoading: false,
+    isContactFilterClearDisabled: true,
   },
 };
 
