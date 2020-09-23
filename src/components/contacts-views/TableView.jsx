@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { NavLink, useRouteMatch } from 'react-router-dom';
 import {
   Table, Avatar, Typography, Spin,
 } from 'antd';
@@ -8,18 +9,35 @@ import NationalityTag from '../nationality-tag/NationalityTag';
 function TableView({ contactsCollection, isLoading }) {
   const { Text } = Typography;
 
+  const { url } = useRouteMatch();
+
   const columns = [
     {
       title: 'Avatar',
       dataIndex: 'avatar',
       key: 'avatar',
-      render: (avatar) => (<Avatar src={avatar} size="large" />),
+      render: (avatar, key) => (
+        <NavLink
+          url={url}
+          to={`${url}/${key.key}`}
+        >
+          <Avatar src={avatar} size="large" />
+        </NavLink>
+      ),
       width: 80,
     },
     {
       title: 'Full Name',
       dataIndex: 'fullName',
       key: 'fullName',
+      render: (name, key) => (
+        <NavLink
+          url={url}
+          to={`${url}/${key.key}`}
+        >
+          {name}
+        </NavLink>
+      ),
       sorter: (a, b) => a.fullName.localeCompare(b.fullName),
       width: 170,
     },
@@ -72,8 +90,8 @@ function TableView({ contactsCollection, isLoading }) {
     },
   ];
 
-  const data = contactsCollection.map((contact) => ({
-    key: contact.login.uuid,
+  const data = contactsCollection.map((contact, item) => ({
+    key: item + 1,
     avatar: contact.picture.thumbnail,
     fullName: `${contact.name.title}. ${contact.name.first} ${contact.name.last}`,
     birthday: `${contact.dob.date} ${contact.dob.age} years`,

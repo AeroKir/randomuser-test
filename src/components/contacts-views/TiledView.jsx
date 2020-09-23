@@ -22,8 +22,7 @@ function TiledView({
         <Col span={8}>
           <ContactCard
             url={url}
-            id={item}
-            getId={() => console.log('hey')}
+            id={item + 1}
             contactCardImage={contact.picture.medium}
             contactCardTitle={`${contact.name.title}. ${contact.name.first} ${contact.name.last}`}
             contactCardTitleSecondary={`(${contact.dob.age} years)`}

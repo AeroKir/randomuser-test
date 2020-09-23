@@ -13,7 +13,6 @@ import './ContactCard.css';
 function ContactCard({
   url,
   id,
-  getId,
   contactCardImage,
   contactCardTitle,
   contactCardTitleSecondary,
@@ -29,10 +28,6 @@ function ContactCard({
   const userContactsList = classNames('UserProfile-userContactsList');
   const userContactsItem = classNames('UserProfile-userContactsItem');
 
-  const handleClick = (item) => {
-    getId(item);
-  };
-
   return (
 
     <Card
@@ -40,7 +35,10 @@ function ContactCard({
       cover={<AppImage src={contactCardImage} />}
     >
 
-      <NavLink url={url} to={`${url}/${id}`} onClick={handleClick(id)}>
+      <NavLink
+        url={url}
+        to={`${url}/${id}`}
+      >
         <Title level={3} style={{ textAlign: 'left' }}>
           {contactCardTitle}
           <Text
@@ -82,7 +80,6 @@ ContactCard.propTypes = {
     PropTypes.number,
     PropTypes.string,
   ]).isRequired,
-  getId: PropTypes.func.isRequired,
   contactCardImage: PropTypes.string,
   contactCardTitle: PropTypes.string,
   contactCardTitleSecondary: PropTypes.string,
