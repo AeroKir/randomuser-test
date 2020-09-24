@@ -18,52 +18,62 @@ function ContactCard({
   contactCardTitleSecondary,
   contactCardEmail,
   contactCardPhone,
+  contactCardLocationCountry,
   contactCardLocation,
   contactCardNationality,
 }) {
-  const {
-    Title, Text,
-  } = Typography;
+  const { Text, Link } = Typography;
 
-  const userContactsList = classNames('UserProfile-userContactsList');
-  const userContactsItem = classNames('UserProfile-userContactsItem');
+  const contactCard = classNames('ContactCard');
+  const contactCardPicture = classNames('ContactCard-picture');
+  const contactCardContactsList = classNames('ContactCard-contactsList');
+  const contactCardContactsItem = classNames('ContactCard-contactsItem');
+  const contactCardSecondaryColor = classNames('ContactCard--secondaryColor');
 
   return (
 
     <Card
+      className={contactCard}
       hoverable
-      cover={<AppImage src={contactCardImage} />}
     >
 
       <NavLink
         url={url}
         to={`${url}/${id}`}
       >
-        <Title level={3} style={{ textAlign: 'left' }}>
+        <AppImage className={contactCardPicture} src={contactCardImage} />
+        <Link href={`${url}/${id}`} style={{ fontSize: 18, textAlign: 'left' }}>
           {contactCardTitle}
           <Text
             type="secondary"
-            style={{ fontSize: '19px', paddingLeft: '5px' }}
+            style={{ fontSize: '12px', paddingLeft: '5px' }}
           >
             {contactCardTitleSecondary}
           </Text>
-        </Title>
+        </Link>
       </NavLink>
 
       <Divider dashed style={{ margin: '12px 0' }} />
 
-      <ul className={userContactsList}>
-        <li className={userContactsItem}>
-          <Text copyable={{ text: contactCardEmail }} style={{ paddingRight: '8px' }} />
+      <ul className={contactCardContactsList}>
+        <li className={contactCardContactsItem}>
+          <Text copyable={{ text: contactCardEmail }} style={{ paddingRight: '8px' }} ellipsis={{ rows: 1 }} />
           <a href={`mailto:${contactCardEmail}`}>{contactCardEmail}</a>
         </li>
-        <li className={userContactsItem}>
+        <li className={contactCardContactsItem}>
           <Text copyable={{ text: contactCardPhone }} style={{ paddingRight: '8px' }} />
           <a href={`tel:${contactCardPhone}`}>{contactCardPhone}</a>
         </li>
-        <li className={userContactsItem}>
-          <Text copyable={{ text: contactCardLocation }} style={{ paddingRight: '8px' }} />
-          <span>{contactCardLocation}</span>
+        <li className={contactCardContactsItem}>
+          <Text
+            copyable={{
+              text: `[${contactCardLocationCountry}] ${contactCardLocation}`,
+            }}
+            style={{ paddingRight: '8px' }}
+          />
+          <Text strong className={contactCardSecondaryColor}>{`/${contactCardLocationCountry}/`}</Text>
+          <br />
+          <span className={contactCardSecondaryColor}>{contactCardLocation}</span>
         </li>
       </ul>
 
@@ -86,6 +96,7 @@ ContactCard.propTypes = {
   contactCardEmail: PropTypes.string,
   contactCardPhone: PropTypes.string,
   contactCardLocation: PropTypes.string,
+  contactCardLocationCountry: PropTypes.string,
   contactCardNationality: PropTypes.string,
 };
 
@@ -96,6 +107,7 @@ ContactCard.defaultProps = {
   contactCardEmail: 'mail@example.com',
   contactCardPhone: '1234567',
   contactCardLocation: 'Earth',
+  contactCardLocationCountry: 'USA',
   contactCardNationality: 'Geek',
 };
 
