@@ -30,13 +30,13 @@ function TiledView({
             contactCardTitleSecondary={`(${contact.dob.age} years)`}
             contactCardEmail={contact.email}
             contactCardPhone={contact.phone}
+            contactCardLocationCountry={contact.location.country}
             contactCardLocation={
-              `/${contact.location.country}/
-               ${contact.location.street.number}
-               ${contact.location.street.name},
-               ${contact.location.city},
-               ${contact.location.state}
-               ${contact.location.postcode}`
+               `${contact.location.street.number}
+                ${contact.location.street.name},
+                ${contact.location.city},
+                ${contact.location.state}
+                ${contact.location.postcode}`
             }
             contactCardNationality={contact.nat}
           />
