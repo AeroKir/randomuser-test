@@ -25,6 +25,9 @@ function UserProfileHeaderBlock({
 }) {
   const userProfileHeaderBlock = classNames('UserProfileHeaderBlock');
   const userProfileHeaderBlockButton = classNames('UserProfileHeaderBlock-button');
+  const userAvatar = classNames('UserProfileHeaderBlock-avatar');
+  const userProfileMenu = classNames('UserProfileHeaderBlock-menu');
+  const userProfileMenuText = classNames('UserProfileHeaderBlock-menuText');
 
   const success = () => {
     message.success('Successfully logged out');
@@ -38,7 +41,7 @@ function UserProfileHeaderBlock({
   const { Text } = Typography;
 
   const menu = (
-    <Menu>
+    <Menu className={userProfileMenu}>
       <Menu.Item key="1" icon={<UserOutlined />}>
         <NavLink to="/profile">Profile</NavLink>
       </Menu.Item>
@@ -61,16 +64,17 @@ function UserProfileHeaderBlock({
         <Fragment key={user.login.uuid}>
           <Dropdown overlay={menu}>
             <Button type="link" className={userProfileHeaderBlockButton}>
-              <Text ellipsis>
+              <Text className={userProfileMenuText} style={{ verticalAlign: 'middle' }} ellipsis>
                 {`Hello! ${user.name.title}. ${user.name.first} ${user.name.last}`}
               </Text>
-              <DownOutlined />
+              <DownOutlined className={userProfileMenuText} />
+              <Avatar
+                className={userAvatar}
+                src={user.picture.thumbnail}
+                style={{ width: '46px', height: '46px' }}
+              />
             </Button>
           </Dropdown>
-          <Avatar
-            src={user.picture.thumbnail}
-            style={{ width: '46px', height: '46px' }}
-          />
         </Fragment>
       ))}
     </div>

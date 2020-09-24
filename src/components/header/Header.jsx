@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Layout, Button, Row, Col,
-} from 'antd';
+import { Layout, Button } from 'antd';
 import { LoginOutlined } from '@ant-design/icons';
 import classNames from 'classnames';
 
@@ -15,39 +13,38 @@ import './Header.css';
 
 function Header({ handleSignIn, isSignedIn }) {
   const header = classNames('Header');
+  const headerLogo = classNames('Header-logo');
+  const headerNavMenu = classNames('Header-navMenu');
+  const headerProfile = classNames('Header-profile');
 
   return (
     <>
       <Layout.Header className={header}>
 
-        <Row align="top" style={{ width: '5%' }}>
-          <Col>
-            <LogoContainer />
-          </Col>
-        </Row>
-        <Row justify="space-between" align="top" style={{ width: '95%' }}>
-          <Col span={10}>
-            <NavbarContainer />
-          </Col>
+        <div className={headerLogo}>
+          <LogoContainer />
+        </div>
+
+        <div className={headerNavMenu}>
+          <NavbarContainer />
+        </div>
+
+        <div className={headerProfile}>
           {!isSignedIn ? (
-            <Col span={2}>
-              <Button
-                type="link"
-                htmlType="button"
-                icon={(
-                  <LoginOutlined />
+            <Button
+              type="link"
+              htmlType="button"
+              icon={(
+                <LoginOutlined />
               )}
-                onClick={handleSignIn}
-              >
-                Sign In
-              </Button>
-            </Col>
+              onClick={handleSignIn}
+            >
+              Sign In
+            </Button>
           ) : (
-            <Col span={6}>
-              <UserProfileHeaderBlockContainer />
-            </Col>
+            <UserProfileHeaderBlockContainer />
           )}
-        </Row>
+        </div>
 
       </Layout.Header>
     </>
