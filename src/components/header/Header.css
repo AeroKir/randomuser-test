@@ -1,5 +1,4 @@
 .Header {
-  width: 100vw;
   position: sticky;
   top: 0;
   display: flex;
@@ -22,7 +21,7 @@
 .Header-profile {
   width: auto;
   text-align: right;
-  padding-right: 5px;
+  padding-right: 15px;
 }
 
 /* @media styles */
