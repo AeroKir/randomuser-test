@@ -25,6 +25,7 @@ function UserProfile({
   const userProfileInfo = classNames('UserProfile-userInfo');
   const userContactsList = classNames('UserProfile-userContactsList');
   const userContactsItem = classNames('UserProfile-userContactsItem');
+  const userProfileSecondaryColor = classNames('UserProfile--secondaryColor');
 
   const handleAlertClose = () => {
     attemptUserUpdate();
@@ -87,10 +88,9 @@ function UserProfile({
                     }}
                     style={{ paddingRight: '8px' }}
                   />
-                  <Text strong style={{ color: '#5b5b6b' }}>{`/${user.location.country}/`}</Text>
+                  <Text strong className={userProfileSecondaryColor}>{`/${user.location.country}/`}</Text>
                   <br />
-                  {' '}
-                  <Text type="secondary" style={{ color: '#5b5b6b' }} ellipsis>
+                  <Text className={userProfileSecondaryColor}>
                     {`${user.location.street.number}
                       ${user.location.street.name},
                       ${user.location.city},
