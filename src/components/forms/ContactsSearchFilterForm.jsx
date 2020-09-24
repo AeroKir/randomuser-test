@@ -10,6 +10,7 @@ import {
 import { CloseOutlined } from '@ant-design/icons';
 
 import NATIONALITIES from '../../constants/nationalities';
+import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 function ContactsSearchFilterForm({
   nameFilter, genderFilter, nationalityFilter, isContactFilterClearDisabled, handleClearForm,
@@ -32,15 +33,18 @@ function ContactsSearchFilterForm({
     nationalityFilter(nationalityValue);
   };
 
+  const { width, height } = useWindowDimensions();
+  const mobileViewportBreakpoint = 620;
+
   return (
-    <Form layout="inline">
+    <Form layout={width >= mobileViewportBreakpoint ? 'inline' : 'vertical'} style={{ width: '100%' }}>
 
       <Form.Item>
         <Input.Search
           placeholder="Search by full name"
           size="large"
           allowClear
-          style={{ width: 530 }}
+          style={{ width: width >= mobileViewportBreakpoint ? 530 : '100%' }}
           value={queryValue}
           onChange={(e) => setQueryValue(e.target.value)}
         />
@@ -51,7 +55,7 @@ function ContactsSearchFilterForm({
           placeholder="Gender"
           size="large"
           allowClear
-          style={{ width: 195 }}
+          style={{ width: width >= mobileViewportBreakpoint ? 195 : '100%' }}
           onChange={handleGenderFilter}
         >
           <Option value="male">Male</Option>
@@ -65,7 +69,7 @@ function ContactsSearchFilterForm({
           placeholder="Nationality"
           mode="tags"
           size="large"
-          style={{ width: 245 }}
+          style={{ width: width >= mobileViewportBreakpoint ? 245 : '100%' }}
           onChange={handleNationalityFilter}
         >
           {Object.keys(NATIONALITIES).map((nat, item) => {
