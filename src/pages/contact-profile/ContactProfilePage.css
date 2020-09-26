@@ -30,4 +30,34 @@
 
 .ContactProfile-contactContactsItem {
   padding-bottom: 5px;
+  text-align: left;
+}
+
+/* @media styles */
+
+@media screen and (max-width: 620px) and (min-width: 320px) {
+  .ContactProfile {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    margin: 20px auto;
+  }
+
+  .ContactProfile-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0 auto;
+    padding: 0 15px;
+    width: 100vw;
+  }
+
+  .ContactProfile-contactImage {
+    margin: 0 auto 15px;
+  }
+
+  .ContactProfile-contactContactsItem {
+    white-space: normal;
+  }
 }
