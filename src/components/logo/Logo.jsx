@@ -5,20 +5,20 @@ import classNames from 'classnames';
 
 import 'antd/dist/antd.css';
 import './Logo.css';
-import wezomLogo from '../../assets/wezom-logo.svg';
+import reactLogo from '../../assets/react-logo.svg';
 
 function Logo({ isUserLoggedOut }) {
   const logo = classNames('Logo');
 
   if (isUserLoggedOut) {
     return (
-      <img src={wezomLogo} alt="Wezom logo" className={logo} />
+      <img src={reactLogo} alt="Wezom logo" className={logo} />
     );
   }
 
   return (
     <NavLink to="/">
-      <img src={wezomLogo} alt="Wezom logo" className={logo} />
+      <img src={reactLogo} alt="Wezom logo" className={logo} />
     </NavLink>
   );
 }
