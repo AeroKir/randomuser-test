@@ -9,7 +9,7 @@ function Footer() {
 
   return (
     <Layout.Footer className={footer}>
-      <span>2020 &copy; Wezom React-Redux Test</span>
+      <span>2020 &copy; Random User React-Redux Test</span>
     </Layout.Footer>
   );
 }
