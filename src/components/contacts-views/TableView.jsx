@@ -58,6 +58,7 @@ function TableView({ contactsCollection, isLoading }) {
         </span>
       ),
       ellipsis: true,
+      width: 150,
     },
     {
       title: 'Phone',
@@ -69,6 +70,8 @@ function TableView({ contactsCollection, isLoading }) {
           <a href={`tel:${phone}`}>{phone}</a>
         </span>
       ),
+      ellipsis: true,
+      width: 150,
     },
     {
       title: 'Location',
@@ -80,6 +83,7 @@ function TableView({ contactsCollection, isLoading }) {
           <span>{location}</span>
         </span>
       ),
+      width: 250,
     },
     {
       title: 'Nationality',
@@ -87,6 +91,7 @@ function TableView({ contactsCollection, isLoading }) {
       key: 'nationality',
       render: (nationality) => (<NationalityTag userNationality={nationality} />),
       align: 'right',
+      width: 170,
     },
   ];
 
@@ -118,6 +123,7 @@ function TableView({ contactsCollection, isLoading }) {
       dataSource={data}
       pagination={false}
       style={{ marginBottom: 15, boxShadow: '0 5px 5px hsla(0,0%,40%,.1' }}
+      scroll={{ x: 320 }}
     />
   );
 }

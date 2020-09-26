@@ -33,7 +33,7 @@ function ContactsSearchFilterForm({
     nationalityFilter(nationalityValue);
   };
 
-  const { width, height } = useWindowDimensions();
+  const { width } = useWindowDimensions();
   const mobileViewportBreakpoint = 620;
 
   return (

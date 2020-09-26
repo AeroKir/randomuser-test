@@ -109,7 +109,7 @@ function ContactsPage({
         {isTableView ? (
           <TableView contactsCollection={currentContacts} isLoading={isLoading} />
         ) : (
-          <Row justify="center">
+          <Row justify="space-between">
             <TiledView contactsCollection={currentContacts} isLoading={isLoading} />
           </Row>
         )}

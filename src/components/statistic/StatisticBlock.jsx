@@ -7,11 +7,14 @@ import {
 } from 'antd';
 
 import NATIONALITIES from '../../constants/nationalities';
+import useWindowDimensions from '../../hooks/useWindowDimensions';
 import generateKey from '../../utils/generateKey';
-
 
 function StatisticBlock({ contactsData }) {
   const { Text } = Typography;
+
+  const { width } = useWindowDimensions();
+  const mobileViewportBreakpoint = 620;
 
   return (
     <Row gutter={[16, 14]} justify="start" style={{ width: '90%' }}>
@@ -21,7 +24,12 @@ function StatisticBlock({ contactsData }) {
           const nationalityAmount = contactsData.filter((contact) => contact.nat === nationality);
 
           return (
-            <Col key={generateKey()} className="gutter-row" span={4} style={{ textAlign: 'left' }}>
+            <Col
+              key={generateKey()}
+              className="gutter-row"
+              span={width >= mobileViewportBreakpoint ? 4 : 12}
+              style={{ textAlign: 'left' }}
+            >
               <Text strong>
                 {nationalityName}
                 :
