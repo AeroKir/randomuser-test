@@ -20,7 +20,7 @@ function BaseAppLayout({ history }) {
   const layout = classNames('BaseAppLayout');
 
   return (
-    <Router history={history} basename="/wezom-test-app">
+    <Router history={history}>
       <Layout className={layout}>
         <HeaderContainer />
 

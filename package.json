@@ -1,7 +1,7 @@
 {
   "name": "wezom-test",
   "author": "Kirill Shevtsov",
-  "homepage": "https://aerokir.github.io/wezom-test-app/",
+  "homepage": "https://aerokir.github.io/wezom-test-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
