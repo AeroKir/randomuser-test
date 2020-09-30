@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "058e88ef088c2d1cf5567737916aac3b",
+    "revision": "1154fc366fc8dfd0b12440a0f2d94fba",
     "url": "/wezom-test-app/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/wezom-test-app/static/css/2.847e01e0.chunk.css"
   },
   {
-    "revision": "a84ba3da49d3ca671023",
+    "revision": "e9427dcce6f775f4dd74",
     "url": "/wezom-test-app/static/css/main.ed4c1ef7.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/wezom-test-app/static/js/2.c93e61c2.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "a84ba3da49d3ca671023",
-    "url": "/wezom-test-app/static/js/main.7a20a048.chunk.js"
+    "revision": "e9427dcce6f775f4dd74",
+    "url": "/wezom-test-app/static/js/main.5286dcad.chunk.js"
   },
   {
     "revision": "62d2dd7f28f02fd9acdf",
