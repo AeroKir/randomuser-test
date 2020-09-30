@@ -18,26 +18,24 @@ import './BaseAppLayout.css';
 
 function BaseAppLayout({ history }) {
   const layout = classNames('BaseAppLayout');
-  const mode = process.env.NODE_ENV;
-  const publicUrl = process.env.PUBLIC_URL;
 
   return (
-    <Router history={history}>
+    <Router history={history} basename="/wezom-test-app">
       <Layout className={layout}>
         <HeaderContainer />
 
         <SignInFormContainer />
 
         <Switch>
-          <Route exact path={mode === 'development' ? '/' : publicUrl} component={HomePage} />
-          <Route exact path={mode === 'development' ? '/profile' : `${publicUrl}/profile`} component={UserProfilePage} />
-          <Route exact path={mode === 'development' ? '/contacts' : `${publicUrl}/contacts`} component={ContactsPageContainer} />
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/profile" component={UserProfilePage} />
+          <Route exact path="/contacts" component={ContactsPageContainer} />
           <Route
             exact
-            path={mode === 'development' ? '/contacts/:contactId' : `${publicUrl}/contacts/:contactId`}
+            path="/contacts/:contactId"
             render={() => <ContactProfilePageContainer />}
           />
-          <Route exact path={mode === 'development' ? '*' : `${publicUrl}/'*'`} component={Page404Container} />
+          <Route exact path="*" component={Page404Container} />
         </Switch>
 
         <Footer />
