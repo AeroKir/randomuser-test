@@ -1,0 +1,49 @@
+.ContactCard {
+  min-width: 300px;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.ContactCard-picture {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.ContactCard-contactsList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; 
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ContactCard-contactsItem {
+  padding-bottom: 5px;
+  text-align: left;
+  white-space: normal;
+}
+
+.ContactCard--secondaryColor {
+  color: #5b5b6b;
+}
+
+/* @media styles */
+
+@media screen and (min-width: 320px) and (max-width: 647px) {
+  .ContactCard {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 648px) and (max-width: 962px) {
+  .ContactCard {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 963px) {
+  .ContactCard {
+    width: 33%;
+  }
+}

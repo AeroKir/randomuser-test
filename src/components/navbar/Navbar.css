@@ -1,0 +1,17 @@
+.Navbar {
+  display: flex;
+}
+
+.Navbar-list {
+  display: inherit;
+  align-items: center;
+  list-style: none;
+}
+
+.Navbar-item {
+  margin-right: 20px;
+}
+
+.Navbar-link {
+  text-transform: capitalize;
+}
