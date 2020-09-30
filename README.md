@@ -1,1 +1,1 @@
-## Test task for [Wezom](https://wezom.com.ua/).
+## The description will be coming soon.
