@@ -29,15 +29,15 @@ function BaseAppLayout({ history }) {
         <SignInFormContainer />
 
         <Switch>
-          <Route exact path={mode !== 'production' ? '/' : publicUrl} component={HomePage} />
-          <Route exact path={mode !== 'production' ? '/profile' : `${publicUrl}/profile`} component={UserProfilePage} />
-          <Route exact path={mode !== 'production' ? '/contacts' : `${publicUrl}/contacts`} component={ContactsPageContainer} />
+          <Route exact path={mode === 'development' ? '/' : publicUrl} component={HomePage} />
+          <Route exact path={mode === 'development' ? '/profile' : `${publicUrl}/profile`} component={UserProfilePage} />
+          <Route exact path={mode === 'development' ? '/contacts' : `${publicUrl}/contacts`} component={ContactsPageContainer} />
           <Route
             exact
-            path={mode !== 'production' ? '/contacts/:contactId' : `${publicUrl}//contacts/:contactId`}
+            path={mode === 'development' ? '/contacts/:contactId' : `${publicUrl}/contacts/:contactId`}
             render={() => <ContactProfilePageContainer />}
           />
-          <Route exact path="*" component={Page404Container} />
+          <Route exact path={mode === 'development' ? '*' : `${publicUrl}'*'`} component={Page404Container} />
         </Switch>
 
         <Footer />
