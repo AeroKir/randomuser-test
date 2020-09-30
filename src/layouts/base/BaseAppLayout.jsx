@@ -20,7 +20,7 @@ function BaseAppLayout({ history }) {
   const layout = classNames('BaseAppLayout');
 
   return (
-    <Router history={history}>
+    <Router history={history} basename="/">
       <Layout className={layout}>
         <HeaderContainer />
 
