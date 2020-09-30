@@ -37,7 +37,7 @@ function BaseAppLayout({ history }) {
             path={mode === 'development' ? '/contacts/:contactId' : `${publicUrl}/contacts/:contactId`}
             render={() => <ContactProfilePageContainer />}
           />
-          <Route exact path={mode === 'development' ? '*' : `${publicUrl}'*'`} component={Page404Container} />
+          <Route exact path={mode === 'development' ? '*' : `${publicUrl}/'*'`} component={Page404Container} />
         </Switch>
 
         <Footer />
