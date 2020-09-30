@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/wezom-test-app/precache-manifest.fa36ecd5c598167647e49ca1fc4d3d20.js"
+  "/wezom-test-app/precache-manifest.264ddffae8832a1a96b8601c73b9a887.js"
 );
 
 self.addEventListener('message', (event) => {

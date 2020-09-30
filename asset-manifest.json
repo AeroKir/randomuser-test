@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/wezom-test-app/static/css/main.ed4c1ef7.chunk.css",
-    "main.js": "/wezom-test-app/static/js/main.5286dcad.chunk.js",
-    "main.js.map": "/wezom-test-app/static/js/main.5286dcad.chunk.js.map",
+    "main.js": "/wezom-test-app/static/js/main.a3706297.chunk.js",
+    "main.js.map": "/wezom-test-app/static/js/main.a3706297.chunk.js.map",
     "runtime-main.js": "/wezom-test-app/static/js/runtime-main.ffce42ee.js",
     "runtime-main.js.map": "/wezom-test-app/static/js/runtime-main.ffce42ee.js.map",
     "static/css/2.847e01e0.chunk.css": "/wezom-test-app/static/css/2.847e01e0.chunk.css",
     "static/js/2.c93e61c2.chunk.js": "/wezom-test-app/static/js/2.c93e61c2.chunk.js",
     "static/js/2.c93e61c2.chunk.js.map": "/wezom-test-app/static/js/2.c93e61c2.chunk.js.map",
     "index.html": "/wezom-test-app/index.html",
-    "precache-manifest.fa36ecd5c598167647e49ca1fc4d3d20.js": "/wezom-test-app/precache-manifest.fa36ecd5c598167647e49ca1fc4d3d20.js",
+    "precache-manifest.264ddffae8832a1a96b8601c73b9a887.js": "/wezom-test-app/precache-manifest.264ddffae8832a1a96b8601c73b9a887.js",
     "service-worker.js": "/wezom-test-app/service-worker.js",
     "static/css/2.847e01e0.chunk.css.map": "/wezom-test-app/static/css/2.847e01e0.chunk.css.map",
     "static/css/main.ed4c1ef7.chunk.css.map": "/wezom-test-app/static/css/main.ed4c1ef7.chunk.css.map",
@@ -22,6 +22,6 @@
     "static/css/2.847e01e0.chunk.css",
     "static/js/2.c93e61c2.chunk.js",
     "static/css/main.ed4c1ef7.chunk.css",
-    "static/js/main.5286dcad.chunk.js"
+    "static/js/main.a3706297.chunk.js"
   ]
 }
