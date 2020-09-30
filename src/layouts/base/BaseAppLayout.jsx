@@ -18,6 +18,8 @@ import './BaseAppLayout.css';
 
 function BaseAppLayout({ history }) {
   const layout = classNames('BaseAppLayout');
+  const mode = process.env.NODE_ENV;
+  const publicUrl = process.env.PUBLIC_URL;
 
   return (
     <Router history={history}>
@@ -27,12 +29,12 @@ function BaseAppLayout({ history }) {
         <SignInFormContainer />
 
         <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route exact path="/profile" component={UserProfilePage} />
-          <Route exact path="/contacts" component={ContactsPageContainer} />
+          <Route exact path={mode !== 'production' ? '/' : publicUrl} component={HomePage} />
+          <Route exact path={mode !== 'production' ? '/profile' : `${publicUrl}/profile`} component={UserProfilePage} />
+          <Route exact path={mode !== 'production' ? '/contacts' : `${publicUrl}/contacts`} component={ContactsPageContainer} />
           <Route
             exact
-            path="/contacts/:contactId"
+            path={mode !== 'production' ? '/contacts/:contactId' : `${publicUrl}//contacts/:contactId`}
             render={() => <ContactProfilePageContainer />}
           />
           <Route exact path="*" component={Page404Container} />
