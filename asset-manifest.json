@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/wezom-test-app/static/css/main.ed4c1ef7.chunk.css",
-    "main.js": "/wezom-test-app/static/js/main.5d42b2f4.chunk.js",
-    "main.js.map": "/wezom-test-app/static/js/main.5d42b2f4.chunk.js.map",
-    "runtime-main.js": "/wezom-test-app/static/js/runtime-main.ffce42ee.js",
-    "runtime-main.js.map": "/wezom-test-app/static/js/runtime-main.ffce42ee.js.map",
-    "static/css/2.847e01e0.chunk.css": "/wezom-test-app/static/css/2.847e01e0.chunk.css",
-    "static/js/2.c93e61c2.chunk.js": "/wezom-test-app/static/js/2.c93e61c2.chunk.js",
-    "static/js/2.c93e61c2.chunk.js.map": "/wezom-test-app/static/js/2.c93e61c2.chunk.js.map",
-    "index.html": "/wezom-test-app/index.html",
-    "precache-manifest.ce2036591352e455ab4724d41717e46e.js": "/wezom-test-app/precache-manifest.ce2036591352e455ab4724d41717e46e.js",
-    "service-worker.js": "/wezom-test-app/service-worker.js",
-    "static/css/2.847e01e0.chunk.css.map": "/wezom-test-app/static/css/2.847e01e0.chunk.css.map",
-    "static/css/main.ed4c1ef7.chunk.css.map": "/wezom-test-app/static/css/main.ed4c1ef7.chunk.css.map",
-    "static/js/2.c93e61c2.chunk.js.LICENSE.txt": "/wezom-test-app/static/js/2.c93e61c2.chunk.js.LICENSE.txt",
-    "static/media/BaseAppLayout.css": "/wezom-test-app/static/media/backdrop.f7eab148.jpg",
-    "static/media/react-logo.svg": "/wezom-test-app/static/media/react-logo.c33873b0.svg"
+    "main.css": "/randomuser-test/static/css/main.faff20af.chunk.css",
+    "main.js": "/randomuser-test/static/js/main.20bcbf49.chunk.js",
+    "main.js.map": "/randomuser-test/static/js/main.20bcbf49.chunk.js.map",
+    "runtime-main.js": "/randomuser-test/static/js/runtime-main.b681d1b1.js",
+    "runtime-main.js.map": "/randomuser-test/static/js/runtime-main.b681d1b1.js.map",
+    "static/css/2.847e01e0.chunk.css": "/randomuser-test/static/css/2.847e01e0.chunk.css",
+    "static/js/2.cd223b54.chunk.js": "/randomuser-test/static/js/2.cd223b54.chunk.js",
+    "static/js/2.cd223b54.chunk.js.map": "/randomuser-test/static/js/2.cd223b54.chunk.js.map",
+    "index.html": "/randomuser-test/index.html",
+    "precache-manifest.8ffbe71411225904c91cbc23108a6f8f.js": "/randomuser-test/precache-manifest.8ffbe71411225904c91cbc23108a6f8f.js",
+    "service-worker.js": "/randomuser-test/service-worker.js",
+    "static/css/2.847e01e0.chunk.css.map": "/randomuser-test/static/css/2.847e01e0.chunk.css.map",
+    "static/css/main.faff20af.chunk.css.map": "/randomuser-test/static/css/main.faff20af.chunk.css.map",
+    "static/js/2.cd223b54.chunk.js.LICENSE.txt": "/randomuser-test/static/js/2.cd223b54.chunk.js.LICENSE.txt",
+    "static/media/BaseAppLayout.css": "/randomuser-test/static/media/backdrop.f7eab148.jpg",
+    "static/media/react-logo.svg": "/randomuser-test/static/media/react-logo.c33873b0.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.ffce42ee.js",
+    "static/js/runtime-main.b681d1b1.js",
     "static/css/2.847e01e0.chunk.css",
-    "static/js/2.c93e61c2.chunk.js",
-    "static/css/main.ed4c1ef7.chunk.css",
-    "static/js/main.5d42b2f4.chunk.js"
+    "static/js/2.cd223b54.chunk.js",
+    "static/css/main.faff20af.chunk.css",
+    "static/js/main.20bcbf49.chunk.js"
   ]
 }
