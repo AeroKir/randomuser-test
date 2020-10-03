@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/randomuser-test/static/css/main.faff20af.chunk.css",
-    "main.js": "/randomuser-test/static/js/main.20bcbf49.chunk.js",
-    "main.js.map": "/randomuser-test/static/js/main.20bcbf49.chunk.js.map",
+    "main.js": "/randomuser-test/static/js/main.63654efc.chunk.js",
+    "main.js.map": "/randomuser-test/static/js/main.63654efc.chunk.js.map",
     "runtime-main.js": "/randomuser-test/static/js/runtime-main.b681d1b1.js",
     "runtime-main.js.map": "/randomuser-test/static/js/runtime-main.b681d1b1.js.map",
     "static/css/2.847e01e0.chunk.css": "/randomuser-test/static/css/2.847e01e0.chunk.css",
     "static/js/2.cd223b54.chunk.js": "/randomuser-test/static/js/2.cd223b54.chunk.js",
     "static/js/2.cd223b54.chunk.js.map": "/randomuser-test/static/js/2.cd223b54.chunk.js.map",
     "index.html": "/randomuser-test/index.html",
-    "precache-manifest.8ffbe71411225904c91cbc23108a6f8f.js": "/randomuser-test/precache-manifest.8ffbe71411225904c91cbc23108a6f8f.js",
+    "precache-manifest.01606543da67104cb9118721ea4473fb.js": "/randomuser-test/precache-manifest.01606543da67104cb9118721ea4473fb.js",
     "service-worker.js": "/randomuser-test/service-worker.js",
     "static/css/2.847e01e0.chunk.css.map": "/randomuser-test/static/css/2.847e01e0.chunk.css.map",
     "static/css/main.faff20af.chunk.css.map": "/randomuser-test/static/css/main.faff20af.chunk.css.map",
@@ -22,6 +22,6 @@
     "static/css/2.847e01e0.chunk.css",
     "static/js/2.cd223b54.chunk.js",
     "static/css/main.faff20af.chunk.css",
-    "static/js/main.20bcbf49.chunk.js"
+    "static/js/main.63654efc.chunk.js"
   ]
 }
