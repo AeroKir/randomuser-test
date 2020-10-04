@@ -23,7 +23,7 @@ function ContactsSearchFilterForm({
   useEffect(() => {
     const timer = setTimeout(() => nameFilter(nameQuery), 500);
     return () => clearTimeout(timer);
-  }, [nameQuery]);
+  }, [nameFilter, nameQuery]);
 
   const handleGenderFilter = (genderValue) => {
     genderFilter(genderValue);
